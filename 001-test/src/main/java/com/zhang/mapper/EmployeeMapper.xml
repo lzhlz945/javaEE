@@ -11,7 +11,7 @@
 
     public Employee getEmpById(Integer id);
      -->
-    <select id="getEmpById" resultType="com.zhang.bean.Employee">
+    <select id="getEmpById"  resultType="com.zhang.bean.Employee">
 		select id,last_name as lastName,email,gender from tbl_employee where id = #{id}
 	</select>
     <select id="getId" resultType="employee" databaseId="mysql">
@@ -22,4 +22,24 @@
 		select id,last_name,email,gender  from tbl_employee
 		 where id = #{id}
 	</select>
+
+    <!--void insertEmployee(Employee employee);
+    //update
+    void updateEmployee(Employee employee);
+    //delete
+    void deleteEmployee(Employee employee);-->
+
+    <insert id="insertEmployee" >
+        insert into tbl_employee(last_name,email,gender) values (#{lastName},#{email},#{gender})
+
+    </insert>
+
+    <update id="updateEmployee">
+        update tbl_employee set last_name=#{lastName},email=#{email},gender=#{gender} where id=#{id}
+
+    </update>
+
+    <delete id="deleteEmployee">
+        delete from tbl_employee where id=#{id}
+    </delete>
 </mapper>

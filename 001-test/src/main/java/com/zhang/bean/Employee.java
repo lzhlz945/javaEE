@@ -16,4 +16,11 @@ public class Employee {
     private String lastName;
     private char gender;
     private String email;
+
+    public Employee(Integer id, String lastName, char gender, String email) {
+        this.id = id;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.email = email;
+    }
 }

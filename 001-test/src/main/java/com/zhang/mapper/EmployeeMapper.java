@@ -11,4 +11,10 @@ import com.zhang.bean.Employee;
 public interface EmployeeMapper {
 
     Employee getId(Integer id);
+    //add
+    void insertEmployee(Employee employee);
+    //update
+    void updateEmployee(Employee employee);
+    //delete
+    void deleteEmployee(Employee employee);
 }

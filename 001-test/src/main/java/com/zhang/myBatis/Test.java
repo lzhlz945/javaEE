@@ -17,6 +17,15 @@ import java.io.InputStream;
  * @date:2020/12/21
  */
 public class Test {
+
+    public Test() {
+    }
+
+    public SqlSessionFactory getSqlSessionFactory() throws IOException {
+        String resource = "mybatis.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        return (new SqlSessionFactoryBuilder()).build(inputStream);
+    }
     @org.junit.jupiter.api.Test
     public void test01() throws IOException {
 
@@ -49,6 +58,25 @@ public class Test {
             System.out.println(e);
         } finally {
             session.close();
+        }
+
+
+    }
+    @org.junit.jupiter.api.Test
+    public void test03() throws IOException {
+        SqlSessionFactory factory = this.getSqlSessionFactory();
+        SqlSession sqlSession = factory.openSession();
+        try {
+            EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
+            Employee employee = new Employee((Integer) 1, "qssss", '1', "qq@qq.com");
+
+            /*mapper.insertEmployee(employee);*/
+
+           /* mapper.updateEmployee(employee);*/
+            mapper.deleteEmployee(employee);
+            sqlSession.commit();
+        } finally {
+            sqlSession.close();
         }
 
 
