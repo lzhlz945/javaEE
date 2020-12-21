@@ -14,7 +14,7 @@
     <select id="getEmpById" resultType="com.zhang.bean.Employee">
 		select id,last_name as lastName,email,gender from tbl_employee where id = #{id}
 	</select>
-    <select id="getId" resultType="com.zhang.bean.Employee">
+    <select id="getId" resultType="employee">
 		select * from tbl_employee where id = #{id}
 	</select>
 </mapper>

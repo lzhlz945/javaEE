@@ -8,6 +8,16 @@
     <settings>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
+
+    <typeAliases>
+        <!--第一种：-->
+        <!--<typeAlias type="com.zhang.bean.Employee" alias="employee"/>-->
+        <!--第二种：所有指定包下:不区分大小写-->
+        <package name="com.zhang.bean"/>
+
+
+
+    </typeAliases>
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>

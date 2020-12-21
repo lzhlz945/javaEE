@@ -1,6 +1,7 @@
 package com.zhang.bean;
 
 import lombok.Data;
+import org.apache.ibatis.type.Alias;
 
 /**
  * @author: create by zhl
@@ -9,6 +10,7 @@ import lombok.Data;
  * @date:2020/12/21
  */
 @Data
+//@Alias("qq") 第三种：类上注解的形式
 public class Employee {
     private Integer id;
     private String lastName;
