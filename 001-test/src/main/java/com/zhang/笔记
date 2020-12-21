@@ -137,3 +137,8 @@ environments 元素定义了如何配置环境。
         <property name="Oracle" value="oracle"/>
         <property name="SQL Server" value="sqlserver"/>
     </databaseIdProvider>
+
+
+
+获取添加的自增主键值
+useGeneratedKeys="true" keyProperty="id"

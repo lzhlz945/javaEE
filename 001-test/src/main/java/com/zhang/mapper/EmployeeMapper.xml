@@ -29,7 +29,7 @@
     //delete
     void deleteEmployee(Employee employee);-->
 
-    <insert id="insertEmployee" >
+    <insert id="insertEmployee" parameterType="com.zhang.bean.Employee" useGeneratedKeys="true" keyProperty="id" >
         insert into tbl_employee(last_name,email,gender) values (#{lastName},#{email},#{gender})
 
     </insert>

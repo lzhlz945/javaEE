@@ -70,10 +70,11 @@ public class Test {
             EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
             Employee employee = new Employee((Integer) 1, "qssss", '1', "qq@qq.com");
 
-            /*mapper.insertEmployee(employee);*/
+           mapper.insertEmployee(employee);
+            System.out.println(employee.getId());
 
-           /* mapper.updateEmployee(employee);*/
-            mapper.deleteEmployee(employee);
+            /* mapper.updateEmployee(employee);*/
+           /* mapper.deleteEmployee(employee);*/
             sqlSession.commit();
         } finally {
             sqlSession.close();
