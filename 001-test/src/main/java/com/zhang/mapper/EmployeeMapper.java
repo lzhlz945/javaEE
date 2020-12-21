@@ -1,6 +1,10 @@
 package com.zhang.mapper;
 
 import com.zhang.bean.Employee;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author: create by zhl
@@ -11,6 +15,11 @@ import com.zhang.bean.Employee;
 public interface EmployeeMapper {
 
     Employee getId(Integer id);
+    Employee getIdAndName1(Integer id,String lastName);
+    Employee getIdAndName2(Integer id,String lastName);
+    Employee getIdAndName3(@Param("id") Integer id, @Param("lastName") String lastName);
+    Employee getIdAndName4(Map<String,Object> map);
+    Employee getIdAndName5(List<Integer> list);
     //add
     void insertEmployee(Employee employee);
     //update

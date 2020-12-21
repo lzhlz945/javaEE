@@ -11,6 +11,22 @@
 
     public Employee getEmpById(Integer id);
      -->
+    <select id="getIdAndName5" resultType="Employee">
+        select id,last_name as lastName,email,gender from tbl_employee where id = #{list[0]}
+    </select>
+    <select id="getIdAndName1" resultType="Employee">
+        select id,last_name as lastName,email,gender from tbl_employee where id = #{id} and last_name=#{lastName}
+    </select>
+    <select id="getIdAndName2" resultType="Employee">
+        select id,last_name as lastName,email,gender from tbl_employee where id = #{param1} and last_name=#{param2}
+    </select>
+    <select id="getIdAndName3" resultType="Employee">
+        select id,last_name as lastName,email,gender from tbl_employee where id = #{id} and last_name=#{lastName}
+    </select>
+    <select id="getIdAndName4" resultType="Employee">
+        select id,last_name as lastName,email,gender from tbl_employee where id = #{id} and last_name=#{lastName}
+    </select>
+
     <select id="getEmpById"  resultType="com.zhang.bean.Employee">
 		select id,last_name as lastName,email,gender from tbl_employee where id = #{id}
 	</select>
