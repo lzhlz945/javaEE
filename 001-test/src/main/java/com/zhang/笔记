@@ -102,3 +102,24 @@ public class Author {
 
 下面是一些为常见的 Java 类型内建的类型别名：
   基本类型在前面加下划线"_",包装类小写即可。
+
+
+如果忽略了环境参数，那么将会加载默认环境，如下所示：
+
+SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(reader);
+SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(reader, properties);
+environments 元素定义了如何配置环境。
+
+<environments default="development">
+  <environment id="development">
+    <transactionManager type="JDBC">
+      <property name="..." value="..."/>
+    </transactionManager>
+    <dataSource type="POOLED">
+      <property name="driver" value="${driver}"/>
+      <property name="url" value="${url}"/>
+      <property name="username" value="${username}"/>
+      <property name="password" value="${password}"/>
+    </dataSource>
+  </environment>
+</environments>
