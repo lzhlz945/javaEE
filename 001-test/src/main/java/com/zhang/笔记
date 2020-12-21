@@ -1,0 +1,14 @@
+mapper.xml
+   nameSpace:是接口xxMapper.class的全限定类名
+步骤：
+   //1、获取mybatis的配置文件类路径下的路径
+          String resources="mybatis.xml";
+   2、通过Resources.getResourceAsStream获取流
+          InputStream inputStream = Resources.getResourceAsStream(resources);
+   3、通过SqlSessionFactory获取sqlSessionFactory
+          SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+   4、获取session
+          SqlSession session = sqlSessionFactory.openSession();
+   5、通过session.getMapper(EmployeeMapper.class);
+          获取EmployeeMapper的接口实现类，利用jdk动态代理
+   6、调用方法执行Employee e = mapper.getId(1);
