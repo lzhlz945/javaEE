@@ -84,7 +84,7 @@
     </select>
 
     <!--List<Employee> selectByDeptId(Integer deptId);-->
-    <select id="selectByDeptId" resultType="com.zhang.bean.Department">
-         select id,last_name lastName,email,gender from tbl_employee where id = #{deptId}
+    <select id="selectByDeptId" resultType="com.zhang.bean.Employee">
+         select id,last_name lastName,email,gender from tbl_employee where dp_id = #{deptId}
     </select>
 </mapper>

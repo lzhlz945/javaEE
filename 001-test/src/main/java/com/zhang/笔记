@@ -332,3 +332,7 @@ Preparing: select * from tbl_employee where id=2 and last_name=?
            column="id">
            </collection>
        </resultMap>
+
+    column有多个值时 column="{deptId=id}"
+    fetchType="lazy" 启用延迟加载
+    fetchType="eager" 禁用延迟加载

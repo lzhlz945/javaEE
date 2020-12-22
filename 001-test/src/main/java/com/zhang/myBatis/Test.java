@@ -149,8 +149,6 @@ public class Test {
 
             DepartmentMapper  mapper = sqlSession.getMapper(DepartmentMapper.class);
             Department byIdStep = mapper.getByIdStep(1);
-            System.out.println(byIdStep.getDeptName());
-            System.out.println(byIdStep.getEmps());
 
             sqlSession.commit();
         } finally {
