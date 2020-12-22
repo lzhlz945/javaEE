@@ -1,6 +1,7 @@
 package com.zhang.mapper;
 
 import com.zhang.bean.Employee;
+import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -13,7 +14,11 @@ import java.util.Map;
  * @date:2020/12/21
  */
 public interface EmployeeMapper {
+    //返回单挑map resultType="map"
 
+    //返回map,list中的对象，resultType=bean.class
+    @MapKey("email")
+    Map<Integer,Employee> getMapWEm(String lastName);
     Employee getId(Integer id);
     Employee getIdAndName1(Integer id,String lastName);
     Employee getIdAndName2(Integer id,String lastName);

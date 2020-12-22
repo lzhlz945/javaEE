@@ -9,6 +9,8 @@
         <setting name="mapUnderscoreToCamelCase" value="true"/>
         <setting name="jdbcTypeForNull" value="NULL"/>
 
+        <setting name="useGeneratedKeys" value="true"/>
+
     </settings>
 
     <typeAliases>
@@ -33,7 +35,7 @@
 
 
     </typeAliases>
-    <environments default="dev_oracle">
+    <environments default="dev_mysql">
         <environment id="dev_mysql">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">

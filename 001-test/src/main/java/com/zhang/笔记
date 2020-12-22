@@ -282,3 +282,9 @@ Preparing: select * from tbl_employee where id=2 and last_name=?
 		1、#{email,jdbcType=OTHER};
 		2、jdbcTypeForNull=NULL
 			<setting name="jdbcTypeForNull" value="NULL"/>
+
+
+返回的是多条数据，且封装成为一个map,resultType="bean",在接口上加上@MapKey("xx")xx字段作为map的可以
+
+ @MapKey("email")
+    Map<Integer,Employee> getMapWEm(String lastName);

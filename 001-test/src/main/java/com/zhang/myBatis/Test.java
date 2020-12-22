@@ -72,13 +72,31 @@ public class Test {
         SqlSession sqlSession = factory.openSession();
         try {
             EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
-            Employee employee = new Employee( 12,"qssss", null, "qq@qq.com");
+            Employee employee = new Employee( 122,"qssss", null, "qq@qq.com");
 
            mapper.insertEmployee2(employee);
             System.out.println(employee.getId());
 
             /* mapper.updateEmployee(employee);*/
            /* mapper.deleteEmployee(employee);*/
+            sqlSession.commit();
+        } finally {
+            sqlSession.close();
+        }
+
+
+    }
+    @org.junit.jupiter.api.Test
+    public void test05() throws IOException {
+        SqlSessionFactory factory = this.getSqlSessionFactory();
+        SqlSession sqlSession = factory.openSession();
+        try {
+            EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
+            Map<Integer, Employee> mapWEm = mapper.getMapWEm("%x%");
+            for (Map.Entry<Integer, Employee> entry : mapWEm.entrySet()) {
+
+                System.out.println(entry.getKey()+":"+entry.getValue());
+            }
             sqlSession.commit();
         } finally {
             sqlSession.close();
