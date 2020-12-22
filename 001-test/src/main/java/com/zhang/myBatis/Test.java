@@ -112,7 +112,7 @@ public class Test {
 
             EmployeeMapper1 mapper = sqlSession.getMapper(EmployeeMapper1.class);
             Employee employee = mapper.getId4(1);
-            System.out.println(employee);
+            System.out.println(employee.getDept().getDeptName());
 
             sqlSession.commit();
         } finally {

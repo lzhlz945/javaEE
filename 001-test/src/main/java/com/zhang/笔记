@@ -309,3 +309,8 @@ Preparing: select * from tbl_employee where id=2 and last_name=?
                <association property="dept" select="com.zhang.mapper.DepartmentMapper.getById"
                column="dp_id">   column是把之前查的数据给getById的参数返回的结果封装到dept中
                </association>
+           这里的分步查询，可以在全局配置中设置延迟加载
+           <!--延迟加载-->
+                   <setting name="lazyLoadingEnabled" value="true"/>
+                   <setting name="aggressiveLazyLoading" value="false"/>
+                   只有在需要关联的对象时才会执行后面的sql语句
