@@ -2,6 +2,7 @@ package com.zhang.myBatis;
 
 import com.zhang.bean.Employee;
 import com.zhang.mapper.EmployeeMapper;
+import com.zhang.mapper.EmployeeMapper1;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -101,9 +102,24 @@ public class Test {
         } finally {
             sqlSession.close();
         }
-
-
     }
+
+    @org.junit.jupiter.api.Test
+    public void test06() throws IOException {
+        SqlSessionFactory factory = this.getSqlSessionFactory();
+        SqlSession sqlSession = factory.openSession();
+        try {
+
+            EmployeeMapper1 mapper = sqlSession.getMapper(EmployeeMapper1.class);
+            Employee employee = mapper.getId(2);
+            System.out.println(employee);
+            sqlSession.commit();
+        } finally {
+            sqlSession.close();
+        }
+    }
+
+
     @org.junit.jupiter.api.Test
     public void test04() throws IOException {
         SqlSessionFactory factory = this.getSqlSessionFactory();
