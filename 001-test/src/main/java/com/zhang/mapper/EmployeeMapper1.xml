@@ -48,6 +48,23 @@
 
     </resultMap>
 
+    <!--第三种：分步封装-->
+
+    <resultMap id="resultMapByEmployee4" type="com.zhang.bean.Employee">
+        <id column="id" property="id"/>
+        <result column="last_name" property="lastName"/>
+        <result column="gender" property="gender"/>
+        <result column="email" property="email"/>
+        <association property="dept" select="com.zhang.mapper.DepartmentMapper.getById"
+        column="dp_id">
+        </association>
+
+    </resultMap>
+
+    <select id="getId4" resultMap="resultMapByEmployee4">
+      select id,last_name,email,gender,dp_id from tbl_employee where id = #{id}
+
+    </select>
     <select id="getId3" resultMap="resultMapByEmployee3">
       SELECT e.id id,e.last_name last_name,e.gender gender,e.dp_id d_id,
 		d.id did,d.dep_name dept_name FROM tbl_employee e,tbl_department d

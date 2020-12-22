@@ -305,3 +305,7 @@ Preparing: select * from tbl_employee where id=2 and last_name=?
               <result column="did" property="id"/>
               <result column="dept_name" property="deptName"/>
               </association>
+   第三种：
+               <association property="dept" select="com.zhang.mapper.DepartmentMapper.getById"
+               column="dp_id">   column是把之前查的数据给getById的参数返回的结果封装到dept中
+               </association>
