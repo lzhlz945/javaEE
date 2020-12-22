@@ -288,3 +288,10 @@ Preparing: select * from tbl_employee where id=2 and last_name=?
 
  @MapKey("email")
     Map<Integer,Employee> getMapWEm(String lastName);
+
+
+
+两表查询用resultMap封装数据
+   第一种：
+     <result column="did" property="dept.id"/>
+     <result column="dept_name" property="dept.deptName"/>

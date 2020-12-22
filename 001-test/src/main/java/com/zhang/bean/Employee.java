@@ -16,6 +16,12 @@ public class Employee {
     private String lastName;
     private String gender;
     private String email;
+    private Department dept;
+
+
+    public Employee() {
+
+    }
 
     public Employee(Integer id, String lastName, String gender, String email) {
         this.id = id;

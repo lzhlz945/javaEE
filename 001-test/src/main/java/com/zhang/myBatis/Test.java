@@ -73,10 +73,10 @@ public class Test {
         SqlSession sqlSession = factory.openSession();
         try {
             EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
-            Employee employee = new Employee( 122,"qssss", null, "qq@qq.com");
+//            Employee employee = new Employee( 122,"qssss", null, "qq@qq.com");
 
-           mapper.insertEmployee2(employee);
-            System.out.println(employee.getId());
+//           mapper.insertEmployee2(employee);
+//            System.out.println(employee.getId());
 
             /* mapper.updateEmployee(employee);*/
            /* mapper.deleteEmployee(employee);*/
@@ -111,8 +111,10 @@ public class Test {
         try {
 
             EmployeeMapper1 mapper = sqlSession.getMapper(EmployeeMapper1.class);
-            Employee employee = mapper.getId(2);
+            Employee employee = mapper.getId1(1);
             System.out.println(employee);
+            System.out.println(employee.getDept().getId());
+            System.out.println(employee.getDept().getDeptName());
             sqlSession.commit();
         } finally {
             sqlSession.close();
@@ -126,18 +128,18 @@ public class Test {
         SqlSession sqlSession = factory.openSession();
         try {
             EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
-            Employee employee = new Employee((Integer) 1, "qssss", "1", "qq@qq.com");
+           /* Employee employee = new Employee((Integer) 1, "qssss", "1", "qq@qq.com");
 
-           /* Map<String,Object> map=new HashMap<>();
+           *//* Map<String,Object> map=new HashMap<>();
             map.put("id",2);
             map.put("lastName","sa");
-            Employee sa = mapper.getIdAndName4(map);*/
+            Employee sa = mapper.getIdAndName4(map);*//*
             List<Integer> list=new ArrayList<>();
             list.add(2);
             list.add(3);
             list.add(6);
             Employee sa = mapper.getIdAndName5(list);
-            System.out.println(sa);
+            System.out.println(sa);*/
             sqlSession.commit();
         } finally {
             sqlSession.close();
