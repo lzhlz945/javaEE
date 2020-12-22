@@ -52,6 +52,10 @@
         insert into tbl_employee(id,last_name,email,gender) values (#{id},#{lastName},#{email},#{gender,jdbcType=NULL})
 
     </insert>
+    <insert id="insertEmployee2" parameterType="com.zhang.bean.Employee"  databaseId="oracle" >
+        insert into tbl_employee(id,last_name,email,gender) values (#{id},#{lastName},#{email},#{gender})
+
+    </insert>
 
     <update id="updateEmployee">
         update tbl_employee set last_name=#{lastName},email=#{email},gender=#{gender} where id=#{id}

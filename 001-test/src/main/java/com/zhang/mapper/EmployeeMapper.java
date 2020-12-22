@@ -21,7 +21,9 @@ public interface EmployeeMapper {
     Employee getIdAndName4(Map<String,Object> map);
     Employee getIdAndName5(List<Integer> list);
     //add
-    void insertEmployee(Employee employee); void insertEmployee1(Employee employee);
+    void insertEmployee(Employee employee);
+    void insertEmployee1(Employee employee);
+    void insertEmployee2(Employee employee);
     //update
     void updateEmployee(Employee employee);
     //delete

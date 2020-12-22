@@ -72,9 +72,9 @@ public class Test {
         SqlSession sqlSession = factory.openSession();
         try {
             EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
-            Employee employee = new Employee( 2, "qssss", null, "qq@qq.com");
+            Employee employee = new Employee( 12,"qssss", null, "qq@qq.com");
 
-           mapper.insertEmployee1(employee);
+           mapper.insertEmployee2(employee);
             System.out.println(employee.getId());
 
             /* mapper.updateEmployee(employee);*/
