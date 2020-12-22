@@ -11,4 +11,5 @@ import com.zhang.bean.Department;
 public interface DepartmentMapper {
     Department getById(Integer id);
     Department getByIdAndE(Integer id);
+    Department getByIdStep(Integer id);
 }

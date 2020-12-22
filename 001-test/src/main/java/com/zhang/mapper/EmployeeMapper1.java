@@ -18,4 +18,6 @@ public interface EmployeeMapper1 {
    Employee getId1(Integer id);
    Employee getId3(Integer id);
    Employee getId4(Integer id);
+
+   List<Employee> selectByDeptId(Integer deptId);
 }

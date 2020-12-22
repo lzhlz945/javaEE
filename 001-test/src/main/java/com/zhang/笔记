@@ -323,3 +323,12 @@ Preparing: select * from tbl_employee where id=2 and last_name=?
                 <result column="email" property="email"/>
                 <result column="gender" property="gender"/>
             </collection>
+
+查询关联bean返回集合resultMap封装数据分步查询
+    <resultMap id="r2" type="com.zhang.bean.Department">
+           <id column="id" property="id"/>
+           <result column="dep_name" property="deptName"/>
+           <collection property="emps" select="com.zhang.mapper.EmployeeMapper1.selectByDeptId"
+           column="id">
+           </collection>
+       </resultMap>

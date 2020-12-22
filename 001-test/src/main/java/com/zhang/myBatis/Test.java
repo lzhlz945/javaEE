@@ -141,6 +141,23 @@ public class Test {
         }
     }
 
+    @org.junit.jupiter.api.Test
+    public void test08() throws IOException {
+        SqlSessionFactory factory = this.getSqlSessionFactory();
+        SqlSession sqlSession = factory.openSession();
+        try {
+
+            DepartmentMapper  mapper = sqlSession.getMapper(DepartmentMapper.class);
+            Department byIdStep = mapper.getByIdStep(1);
+            System.out.println(byIdStep.getDeptName());
+            System.out.println(byIdStep.getEmps());
+
+            sqlSession.commit();
+        } finally {
+            sqlSession.close();
+        }
+    }
+
 
     @org.junit.jupiter.api.Test
     public void test04() throws IOException {

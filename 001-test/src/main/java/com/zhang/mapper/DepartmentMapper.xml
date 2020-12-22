@@ -18,10 +18,20 @@
             <result column="email" property="email"/>
             <result column="gender" property="gender"/>
         </collection>
-
-
-
     </resultMap>
+
+    <resultMap id="r2" type="com.zhang.bean.Department">
+        <id column="id" property="id"/>
+        <result column="dep_name" property="deptName"/>
+        <collection property="emps" select="com.zhang.mapper.EmployeeMapper1.selectByDeptId"
+        column="id">
+        </collection>
+    </resultMap>
+
+
+    <select id="getByIdStep" resultMap="r2">
+        select id,dep_name from tbl_department where id=#{id}
+    </select>
     <select id="getById" resultType="com.zhang.bean.Department">
         select id,dep_name deptName from tbl_department where id=#{id}
     </select>
