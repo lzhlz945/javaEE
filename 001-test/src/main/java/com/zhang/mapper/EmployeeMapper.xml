@@ -44,8 +44,12 @@
     //delete
     void deleteEmployee(Employee employee);-->
 
-    <insert id="insertEmployee" parameterType="com.zhang.bean.Employee" useGeneratedKeys="true" keyProperty="id" >
-        insert into tbl_employee(last_name,email,gender) values (#{lastName},#{email},#{gender})
+    <insert id="insertEmployee" parameterType="com.zhang.bean.Employee" useGeneratedKeys="true" keyProperty="id" databaseId="oracle" >
+        insert into tbl_employee(id,last_name,email,gender) values (#{id},#{lastName},#{email},#{gender})
+
+    </insert>
+    <insert id="insertEmployee1" parameterType="com.zhang.bean.Employee"  databaseId="oracle" >
+        insert into tbl_employee(id,last_name,email,gender) values (#{id},#{lastName},#{email},#{gender,jdbcType=NULL})
 
     </insert>
 

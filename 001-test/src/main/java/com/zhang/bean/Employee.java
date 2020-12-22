@@ -14,10 +14,10 @@ import org.apache.ibatis.type.Alias;
 public class Employee {
     private Integer id;
     private String lastName;
-    private char gender;
+    private String gender;
     private String email;
 
-    public Employee(Integer id, String lastName, char gender, String email) {
+    public Employee(Integer id, String lastName, String gender, String email) {
         this.id = id;
         this.lastName = lastName;
         this.gender = gender;

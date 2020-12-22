@@ -36,10 +36,10 @@ public class Test {
         String resources="mybatis.xml";
         InputStream inputStream = Resources.getResourceAsStream(resources);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        SqlSession session = sqlSessionFactory.openSession();
+        SqlSession session = sqlSessionFactory.openSession(true);
 
         try {
-            Employee employee = session.selectOne("EmployeeMapper.getEmpById", 1);
+            Employee employee = session.selectOne("EmployeeMapper.getEmpById", 2);
             System.out.println(employee);
         } finally {
             session.close();
@@ -72,9 +72,9 @@ public class Test {
         SqlSession sqlSession = factory.openSession();
         try {
             EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
-            Employee employee = new Employee((Integer) 1, "qssss", '1', "qq@qq.com");
+            Employee employee = new Employee( 2, "qssss", null, "qq@qq.com");
 
-           mapper.insertEmployee(employee);
+           mapper.insertEmployee1(employee);
             System.out.println(employee.getId());
 
             /* mapper.updateEmployee(employee);*/
@@ -92,7 +92,7 @@ public class Test {
         SqlSession sqlSession = factory.openSession();
         try {
             EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
-            Employee employee = new Employee((Integer) 1, "qssss", '1', "qq@qq.com");
+            Employee employee = new Employee((Integer) 1, "qssss", "1", "qq@qq.com");
 
            /* Map<String,Object> map=new HashMap<>();
             map.put("id",2);

@@ -127,6 +127,14 @@
       <artifactId>log4j-api</artifactId>
       <version>2.12.1</version>
     </dependency>
+
+    <dependency>
+      <groupId>com.zhang.ojdbc</groupId>
+      <artifactId>ojdbc</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/src/main/java/com/zhang/lib/ojdbc6.jar</systemPath>
+    </dependency>
   </dependencies>
   <build>
     <resources>
