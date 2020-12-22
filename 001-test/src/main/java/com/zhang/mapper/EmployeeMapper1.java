@@ -16,4 +16,5 @@ import java.util.Map;
 public interface EmployeeMapper1 {
    Employee getId(Integer id);
    Employee getId1(Integer id);
+   Employee getId3(Integer id);
 }

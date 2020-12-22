@@ -295,3 +295,13 @@ Preparing: select * from tbl_employee where id=2 and last_name=?
    第一种：
      <result column="did" property="dept.id"/>
      <result column="dept_name" property="dept.deptName"/>
+
+   第二种：
+      <!--  association可以指定联合的javaBean对象
+      		property="dept"：指定哪个属性是联合的对象employee中的dept
+      		javaType:指定这个属性对象的类型[不能省略]
+      		-->
+              <association property="dept"  javaType="com.zhang.bean.Department">
+              <result column="did" property="id"/>
+              <result column="dept_name" property="deptName"/>
+              </association>

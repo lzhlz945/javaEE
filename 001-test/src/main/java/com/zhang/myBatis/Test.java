@@ -111,7 +111,7 @@ public class Test {
         try {
 
             EmployeeMapper1 mapper = sqlSession.getMapper(EmployeeMapper1.class);
-            Employee employee = mapper.getId1(1);
+            Employee employee = mapper.getId3(1);
             System.out.println(employee);
             System.out.println(employee.getDept().getId());
             System.out.println(employee.getDept().getDeptName());

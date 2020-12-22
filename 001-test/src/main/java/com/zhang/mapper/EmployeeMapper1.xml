@@ -28,14 +28,41 @@
         <result column="dept_name" property="dept.deptName"/>
 
     </resultMap>
-    <select id="getId" resultMap="resultMapByEmployee">
-      select id,last_name,email,gender from tbl_employee where id = #{id}
+
+    <!--第二种关联其他表的字段-->
+    <resultMap id="resultMapByEmployee3" type="com.zhang.bean.Employee">
+        <!--id:主键的，column=数据库的字段名，property：javaBean的对应属性名-->
+        <id column="id" property="id"/>
+        <!---->
+        <result column="last_name" property="lastName"/>
+        <result column="gender" property="gender"/>
+        <result column="email" property="email"/>
+        <!--  association可以指定联合的javaBean对象
+		property="dept"：指定哪个属性是联合的对象employee中的dept
+		javaType:指定这个属性对象的类型[不能省略]
+		-->
+        <association property="dept"  javaType="com.zhang.bean.Department">
+        <result column="did" property="id"/>
+        <result column="dept_name" property="deptName"/>
+        </association>
+
+    </resultMap>
+
+    <select id="getId3" resultMap="resultMapByEmployee3">
+      SELECT e.id id,e.last_name last_name,e.gender gender,e.dp_id d_id,
+		d.id did,d.dep_name dept_name FROM tbl_employee e,tbl_department d
+		WHERE e.dp_id=d.id AND e.id=#{id}
 
     </select>
+
 
     <select id="getId1" resultMap="resultMapByEmployee1">
       	 	SELECT e.id id,e.last_name last_name,e.gender gender,e.dp_id d_id,
 		d.id did,d.dep_name dept_name FROM tbl_employee e,tbl_department d
 		WHERE e.dp_id=d.id AND e.id=#{id}
+    </select>
+    <select id="getId" resultMap="resultMapByEmployee">
+      select id,last_name,email,gender from tbl_employee where id = #{id}
+
     </select>
 </mapper>
