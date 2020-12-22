@@ -8,7 +8,6 @@
     id：唯一标识
     resultType：返回值类型
     #{id}：从传递过来的参数中取出id值
-
     public Employee getEmpById(Integer id);
      -->
     <select id="getIdAndName5" resultType="Employee">
