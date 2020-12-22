@@ -1,6 +1,8 @@
 package com.zhang.myBatis;
 
+import com.zhang.bean.Department;
 import com.zhang.bean.Employee;
+import com.zhang.mapper.DepartmentMapper;
 import com.zhang.mapper.EmployeeMapper;
 import com.zhang.mapper.EmployeeMapper1;
 import org.apache.ibatis.io.Resources;
@@ -120,6 +122,25 @@ public class Test {
         }
     }
 
+    @org.junit.jupiter.api.Test
+    public void test07() throws IOException {
+        SqlSessionFactory factory = this.getSqlSessionFactory();
+        SqlSession sqlSession = factory.openSession();
+        try {
+
+            DepartmentMapper  mapper = sqlSession.getMapper(DepartmentMapper .class);
+            Department byIdAndE = mapper.getByIdAndE(1);
+            List<Employee> emps = byIdAndE.getEmps();
+            for (Employee emp : emps) {
+                System.out.println(emp);
+            }
+
+            sqlSession.commit();
+        } finally {
+            sqlSession.close();
+        }
+    }
+
 
     @org.junit.jupiter.api.Test
     public void test04() throws IOException {
@@ -127,17 +148,17 @@ public class Test {
         SqlSession sqlSession = factory.openSession();
         try {
             EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
-           /* Employee employee = new Employee((Integer) 1, "qssss", "1", "qq@qq.com");
+            Employee employee = new Employee((Integer) 1, "qssss", "1", "qq@qq.com");
 
-           *//* Map<String,Object> map=new HashMap<>();
+            Map<String,Object> map=new HashMap<>();
             map.put("id",2);
             map.put("lastName","sa");
-            Employee sa = mapper.getIdAndName4(map);*//*
+            Employee sa = mapper.getIdAndName4(map);
             List<Integer> list=new ArrayList<>();
             list.add(2);
             list.add(3);
             list.add(6);
-            Employee sa = mapper.getIdAndName5(list);
+           /* Employee sa = mapper.getIdAndName5(list);
             System.out.println(sa);*/
             sqlSession.commit();
         } finally {

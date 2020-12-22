@@ -314,3 +314,12 @@ Preparing: select * from tbl_employee where id=2 and last_name=?
                    <setting name="lazyLoadingEnabled" value="true"/>
                    <setting name="aggressiveLazyLoading" value="false"/>
                    只有在需要关联的对象时才会执行后面的sql语句
+
+
+封装返回对象中是集合 用<collection property="关联对象引用" 类型是集合中泛型的类型 ofType
+     <collection property="emps" ofType="com.zhang.bean.Employee">
+                <id column="eid" property="id"/>
+                <result column="last_name" property="lastName"/>
+                <result column="email" property="email"/>
+                <result column="gender" property="gender"/>
+            </collection>
