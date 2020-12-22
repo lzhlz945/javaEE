@@ -87,4 +87,28 @@
     <select id="selectByDeptId" resultType="com.zhang.bean.Employee">
          select id,last_name lastName,email,gender from tbl_employee where dp_id = #{deptId}
     </select>
+
+    <resultMap id="ss" type="com.zhang.bean.Employee">
+        <id column="id" property="id"/>
+        <!---->
+        <result column="last_name" property="lastName"/>
+        <result column="gender" property="gender"/>
+        <result column="email" property="email"/>
+        <discriminator javaType="string" column="gender">
+            <case value="0" resultType="com.zhang.bean.Employee">
+                <association property="dept" select="com.zhang.mapper.DepartmentMapper.getById" column="id">
+                </association>
+            </case>
+            <case value="1" resultType="com.zhang.bean.Employee">
+                <id column="id" property="id"/>
+                <result column="last_name" property="email"/>
+                <result column="gender" property="lastName"/>
+                <result column="email" property="email"/>
+            </case>
+        </discriminator>
+    </resultMap>
+
+    <select id="selectByDiscriminator" resultMap="ss">
+       select id,last_name lastName,email,gender from tbl_employee where id = #{id}
+    </select>
 </mapper>

@@ -336,3 +336,18 @@ Preparing: select * from tbl_employee where id=2 and last_name=?
     column有多个值时 column="{deptId=id}"
     fetchType="lazy" 启用延迟加载
     fetchType="eager" 禁用延迟加载
+
+
+鉴别器在resultMap中discriminator（case中的resultType必须写）
+   <discriminator javaType="string" column="gender">
+              <case value="0" resultType="com.zhang.bean.Employee">
+                  <association property="dept" select="com.zhang.mapper.DepartmentMapper.getById" column="id">
+                  </association>
+              </case>
+              <case value="1" resultType="com.zhang.bean.Employee">
+                  <id column="id" property="id"/>
+                  <result column="last_name" property="email"/>
+                  <result column="gender" property="lastName"/>
+                  <result column="email" property="email"/>
+              </case>
+          </discriminator>
