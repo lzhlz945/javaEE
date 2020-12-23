@@ -1,6 +1,7 @@
 package com.zhang.mapper;
 
 import com.zhang.bean.Employee;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -17,5 +18,6 @@ public interface EmployeeMapper2 {
     List<Employee> getEmployee3(List<Integer> list);
     List<Employee> getEmployee2(Employee employee);
     void updateById(Employee employee);
+    void insert1(@Param("emps") List<Employee> list);
 
 }

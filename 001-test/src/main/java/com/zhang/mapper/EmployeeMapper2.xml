@@ -86,4 +86,22 @@
             #{ee}
         </foreach>
     </select>
+
+    <!--批量插入-->
+    <insert id="insert1">
+        insert into tbl_employee(id,last_name,gender,email,dp_id)  values
+        <foreach collection="emps" item="ee" separator=",">
+            (
+            #{ee.id},
+            #{ee.lastName},
+            #{ee.gender},
+            #{ee.email},
+            #{ee.dept.id}
+            )
+
+        </foreach>
+
+
+    </insert>
+
 </mapper>
