@@ -404,3 +404,10 @@ foreach批量插入
                     #{ee.dept.id}
                     )
                 </foreach>
+
+ Oracle批量插入：
+     <!-- oracle第一种批量方式 -->
+     <!-- <foreach collection="emps" item="emp" open="begin" close="end;">
+         insert into employees(employee_id,last_name,email)
+            values(employees_seq.nextval,#{emp.lastName},#{emp.email});
+     </foreach> -->  放在begin end中：且开启支持“;” 间隔
