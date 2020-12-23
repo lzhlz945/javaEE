@@ -160,12 +160,12 @@ public class Test {
         try {
 
             EmployeeMapper2   mapper = sqlSession.getMapper(EmployeeMapper2 .class);
-            List<Employee> list=new ArrayList<>();
 
             Employee employee = new Employee(1, "s", "0", null);
-            list.add(new Employee(51,"ss","1","ss@qq.com",new Department(3)));
-            list.add(new Employee(52,"ssd","0","ssd@qq.com",new Department(4)));
-            mapper.getEmployee4(employee);
+            List<Employee> sql = mapper.getSql();
+            for (Employee employee1 : sql) {
+                System.out.println(employee1);
+            }
 
             sqlSession.commit();
         } finally {

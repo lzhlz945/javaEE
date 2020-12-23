@@ -125,7 +125,7 @@
            values(employees_seq.nextval,#{emp.lastName},#{emp.email});
     </foreach> -->
 
-    <select id="getEmployee4" resultType="Employee">
+    <select id="getEmployee4"  resultType="Employee">
         select * from  tbl_employee where
        <!--第一种
        <if test="lastName != null and lastName !=''">
@@ -136,6 +136,21 @@
         <if test="lastName != null and lastName !=''">
             last_name like #{name1}
         </if>
+    </select>
+    <sql id="12">
+        <if test="_databaseId == 'mysql'">
+            id,last_name,email,gender ${x}
+        </if>
+          <if test="_databaseId == 'oracle'">
+            id,last_name,email,gender
+        </if>
+
+    </sql>
+    <select id="getSql" resultType="com.zhang.bean.Employee" databaseId="">
+        select <include refid="12">
+         <property name="x" value="id"/>
+    </include> from tbl_employee
+
     </select>
 
 </mapper>

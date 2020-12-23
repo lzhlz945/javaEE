@@ -440,3 +440,20 @@ mybatis内置参数1：_databaseId
               <if test="lastName != null and lastName !=''">
                   last_name like #{name1}
               </if>
+ sql标签：
+
+    <sql id="12">
+            <if test="_databaseId == 'mysql'">
+                id,last_name,email,gender ${x}
+            </if>
+              <if test="_databaseId == 'oracle'">
+                id,last_name,email,gender
+            </if>
+
+        </sql>
+        <select id="getSql" resultType="com.zhang.bean.Employee" databaseId="">
+            select <include refid="12">
+             <property name="x" value="id"/>   注意：value是字段名称  在sql标签取值${x}
+        </include> from tbl_employee
+
+        </select>
