@@ -59,7 +59,7 @@ public class Test {
         try {
             EmployeeMapper mapper = session.getMapper(EmployeeMapper.class);
             System.out.println(mapper);
-            Employee e = mapper.getId(1);
+            Employee e = mapper.getId1(1);
             System.out.println(e);
         } finally {
             session.close();
@@ -93,11 +93,9 @@ public class Test {
         SqlSession sqlSession = factory.openSession();
         try {
             EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
-            Map<Integer, Employee> mapWEm = mapper.getMapWEm("%x%");
-            for (Map.Entry<Integer, Employee> entry : mapWEm.entrySet()) {
+            Employee employee = new Employee(77, "ss", "1", "12");
+            mapper.insertEmployee1(employee);
 
-                System.out.println(entry.getKey()+":"+entry.getValue());
-            }
             sqlSession.commit();
         } finally {
             sqlSession.close();

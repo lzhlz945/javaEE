@@ -43,6 +43,14 @@
 		 where id = #{id}
 	</select>
 
+    <select id="getId1" resultType="employee" databaseId="mysql">
+		select id,last_name,email,gender  from tbl_employee
+		<if test="_parameter != null">
+
+		 where id = #{_parameter}
+        </if>
+	</select>
+
     <!--void insertEmployee(Employee employee);
     //update
     void updateEmployee(Employee employee);
@@ -53,8 +61,15 @@
         insert into tbl_employee(id,last_name,email,gender) values (#{id},#{lastName},#{email},#{gender})
 
     </insert>
-    <insert id="insertEmployee1" parameterType="com.zhang.bean.Employee"  databaseId="oracle" >
+    <insert id="insertEmployee1" parameterType="com.zhang.bean.Employee"  >
+        <if test="_databaseId == 'oracle'">
+
         insert into tbl_employee(id,last_name,email,gender) values (#{id},#{lastName},#{email},#{gender,jdbcType=NULL})
+        </if>
+        <if test="_databaseId == 'mysql'">
+
+        insert into tbl_employee(id,last_name,email,gender) values (#{id},#{lastName},#{email},#{gender})
+        </if>
 
     </insert>
     <insert id="insertEmployee2" parameterType="com.zhang.bean.Employee"  databaseId="oracle" >

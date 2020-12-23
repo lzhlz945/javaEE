@@ -411,3 +411,20 @@ foreach批量插入
          insert into employees(employee_id,last_name,email)
             values(employees_seq.nextval,#{emp.lastName},#{emp.email});
      </foreach> -->  放在begin end中：且开启支持“;” 间隔
+
+
+mybatis内置参数1：_databaseId
+   <if test="_databaseId == 'oracle'">
+
+           insert into tbl_employee(id,last_name,email,gender) values (#{id},#{lastName},#{email},#{gender,jdbcType=NULL})
+           </if>
+           <if test="_databaseId == 'mysql'">
+
+           insert into tbl_employee(id,last_name,email,gender) values (#{id},#{lastName},#{email},#{gender})
+           </if>
+      内置参数2：_parameter
+
+      select id,last_name,email,gender  from tbl_employee
+      		<if test="_parameter != null">
+
+      		 where id = #{_parameter.id}

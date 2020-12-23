@@ -20,6 +20,7 @@ public interface EmployeeMapper {
     @MapKey("email")
     Map<Integer,Employee> getMapWEm(String lastName);
     Employee getId(Integer id);
+    Employee getId1(Integer id);
     Employee getIdAndName1(Integer id,String lastName);
     Employee getIdAndName2(Integer id,String lastName);
     Employee getIdAndName3(@Param("id") Integer id, @Param("lastName") String lastName);
