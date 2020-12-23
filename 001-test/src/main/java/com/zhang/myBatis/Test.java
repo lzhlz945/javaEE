@@ -165,8 +165,8 @@ public class Test {
         try {
 
             EmployeeMapper2   mapper = sqlSession.getMapper(EmployeeMapper2 .class);
-            Employee employee = new Employee(12, "xx", "0", "");
-            mapper.getEmployee1(employee);
+            Employee employee = new Employee(null, null, "0", null);
+            mapper.getEmployee2(employee);
 
             sqlSession.commit();
         } finally {

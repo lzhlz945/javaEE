@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zhang.mapper.EmployeeMapper2">
-
+<!--where=if-->
    <select id="getEmployee" resultType="Employee">
            select id,last_name lastName,email,gender from tbl_employee
            <where>
@@ -17,7 +17,7 @@
 
            </where>
    </select>
-
+<!--trim-->
     <select id="getEmployee1" resultType="Employee">
            select id,last_name lastName,email,gender from tbl_employee
          <trim prefix="where" suffixOverrides="and" prefixOverrides="and" >
@@ -33,6 +33,31 @@
              </if>
 
          </trim>
+
+
+   </select>
+
+    <select id="getEmployee2" resultType="Employee">
+           select * from tbl_employee
+         <where>
+             <choose>
+                 <when test="id != null">
+                     id=#{id}
+                 </when>
+                 <when test="lastName != null">
+                     last_name like #{lastName}
+                 </when>
+                 <when test="email != null">
+                     email=#{email}
+
+                 </when>
+                 <otherwise>
+                     gender=1
+                 </otherwise>
+
+             </choose>
+
+         </where>
 
 
    </select>

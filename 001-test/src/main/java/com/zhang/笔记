@@ -357,3 +357,18 @@ Preparing: select * from tbl_employee where id=2 and last_name=?
    参数 prefix 以书面前缀开头，
         suffixOverrides 结尾不包含xx
         prefixOverrides 开头不包含xx
+    choose     when otherwise
+        <choose>
+                    <when test="id != null">
+                        id=#{id}
+                    </when>
+                    <when test="lastName != null">
+                        last_name like #{lastName}
+                    </when>
+                    <when test="email != null">
+                        email=#{email}
+
+                    </when>
+                    <otherwise>
+                        gender=1
+                    </otherwise>

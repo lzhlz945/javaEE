@@ -2,6 +2,8 @@ package com.zhang.mapper;
 
 import com.zhang.bean.Employee;
 
+import java.util.List;
+
 /**
  * @author: create by zhl
  * @version: v1.0
@@ -12,5 +14,6 @@ public interface EmployeeMapper2 {
 
     Employee getEmployee(Employee employee);
     Employee getEmployee1(Employee employee);
+    List<Employee> getEmployee2(Employee employee);
 
 }
