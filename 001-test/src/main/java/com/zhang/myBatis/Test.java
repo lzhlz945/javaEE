@@ -5,6 +5,7 @@ import com.zhang.bean.Employee;
 import com.zhang.mapper.DepartmentMapper;
 import com.zhang.mapper.EmployeeMapper;
 import com.zhang.mapper.EmployeeMapper1;
+import com.zhang.mapper.EmployeeMapper2;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -150,6 +151,22 @@ public class Test {
 
             DepartmentMapper  mapper = sqlSession.getMapper(DepartmentMapper.class);
             Department byIdStep = mapper.getByIdStep(1);
+
+            sqlSession.commit();
+        } finally {
+            sqlSession.close();
+        }
+    }
+
+    @org.junit.jupiter.api.Test
+    public void test09() throws IOException {
+        SqlSessionFactory factory = this.getSqlSessionFactory();
+        SqlSession sqlSession = factory.openSession();
+        try {
+
+            EmployeeMapper2   mapper = sqlSession.getMapper(EmployeeMapper2 .class);
+            Employee employee = new Employee(12, "xx", "0", "");
+            mapper.getEmployee1(employee);
 
             sqlSession.commit();
         } finally {

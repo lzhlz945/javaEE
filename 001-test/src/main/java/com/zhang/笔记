@@ -351,3 +351,9 @@ Preparing: select * from tbl_employee where id=2 and last_name=?
                   <result column="email" property="email"/>
               </case>
           </discriminator>
+
+动态sql
+   <trim prefix="where" suffixOverrides="and" prefixOverrides="and" >
+   参数 prefix 以书面前缀开头，
+        suffixOverrides 结尾不包含xx
+        prefixOverrides 开头不包含xx
