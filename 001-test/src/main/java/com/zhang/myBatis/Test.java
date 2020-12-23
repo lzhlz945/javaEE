@@ -165,9 +165,9 @@ public class Test {
             List<Employee> list=new ArrayList<>();
 
             Employee employee = new Employee(1, null, "0", null);
-            list.add(new Employee(47,"ss","1","ss@qq.com",new Department(3)));
-            list.add(new Employee(48,"ssd","0","ssd@qq.com",new Department(4)));
-            mapper.insert1(list);
+            list.add(new Employee(51,"ss","1","ss@qq.com",new Department(3)));
+            list.add(new Employee(52,"ssd","0","ssd@qq.com",new Department(4)));
+            mapper.insert2(list);
 
             sqlSession.commit();
         } finally {

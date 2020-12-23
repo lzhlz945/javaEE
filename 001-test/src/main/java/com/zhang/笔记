@@ -392,3 +392,15 @@ foreach批量插入
               #{ee.dept.id}
               )
           </foreach>
+第二种：在连接属性中 ：allowMultiQueries=true ,允许使用“;”来间隔多条查询
+
+        <foreach collection="emps" item="ee" separator=";">
+                insert into tbl_employee(id,last_name,gender,email,dp_id)  values
+                    (
+                    #{ee.id},
+                    #{ee.lastName},
+                    #{ee.gender},
+                    #{ee.email},
+                    #{ee.dept.id}
+                    )
+                </foreach>

@@ -103,5 +103,21 @@
 
 
     </insert>
+    <!--第二种批量插入-->
+    <insert id="insert2">
+        <foreach collection="emps" item="ee" separator=";">
+        insert into tbl_employee(id,last_name,gender,email,dp_id)  values
+            (
+            #{ee.id},
+            #{ee.lastName},
+            #{ee.gender},
+            #{ee.email},
+            #{ee.dept.id}
+            )
+
+        </foreach>
+
+
+    </insert>
 
 </mapper>
