@@ -56,7 +56,7 @@
         <result column="gender" property="gender"/>
         <result column="email" property="email"/>
         <association property="dept" select="com.zhang.mapper.DepartmentMapper.getById"
-        column="dp_id">
+        column="dp_id" >
         </association>
 
     </resultMap>
