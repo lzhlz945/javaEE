@@ -372,3 +372,5 @@ Preparing: select * from tbl_employee where id=2 and last_name=?
                     <otherwise>
                         gender=1
                     </otherwise>
+
+<set>标签 可以在更新中去除“，”

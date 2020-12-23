@@ -61,4 +61,21 @@
 
 
    </select>
+
+    <update id="updateById">
+        update tbl_employee
+        <set>
+        <if test="id != null and id != ''">
+            id=#{id} ,
+        </if>
+        <if test="lastName != null and lastName != ''">
+            last_name=#{lastName} ,
+        </if>
+
+        <if test="email != null and email != ''">
+            email=#{email}
+        </if>
+        </set>
+        where id=#{id}
+    </update>
 </mapper>

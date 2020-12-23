@@ -15,5 +15,6 @@ public interface EmployeeMapper2 {
     Employee getEmployee(Employee employee);
     Employee getEmployee1(Employee employee);
     List<Employee> getEmployee2(Employee employee);
+    void updateById(Employee employee);
 
 }
