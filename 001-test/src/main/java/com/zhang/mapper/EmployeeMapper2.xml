@@ -78,4 +78,12 @@
         </set>
         where id=#{id}
     </update>
+
+    <select id="getEmployee3" resultType="Employee">
+
+        select * from tbl_employee where id in
+        <foreach collection="list" item="ee" open="(" close=")" separator=",">
+            #{ee}
+        </foreach>
+    </select>
 </mapper>

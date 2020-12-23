@@ -374,3 +374,7 @@ Preparing: select * from tbl_employee where id=2 and last_name=?
                     </otherwise>
 
 <set>标签 可以在更新中去除“，”
+
+<foreach>
+  collection: list类型的会特殊处理封装在map中，那么map的key就是list
+  index:list就是索引值,item就是值，map list是key item是value

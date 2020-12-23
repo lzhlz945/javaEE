@@ -13,10 +13,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author: create by zhl
@@ -166,7 +163,7 @@ public class Test {
 
             EmployeeMapper2   mapper = sqlSession.getMapper(EmployeeMapper2 .class);
             Employee employee = new Employee(1, null, "0", null);
-            mapper.updateById(employee);
+            mapper.getEmployee3(Arrays.asList(1,2,3));
 
             sqlSession.commit();
         } finally {
