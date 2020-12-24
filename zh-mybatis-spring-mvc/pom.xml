@@ -54,7 +54,12 @@
       <artifactId>spring-test</artifactId>
       <version>4.3.10.RELEASE</version>
     </dependency>
-
+    <!--springmvc依赖-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>4.3.16.RELEASE</version>
+    </dependency>
     <!--Spring的事务-->
     <dependency>
       <groupId>org.springframework</groupId>
@@ -129,7 +134,7 @@
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-      <version>5.1.9</version>
+      <version>5.1.6</version>
     </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>
@@ -180,13 +185,23 @@
       <version>1.0</version>
       <scope>system</scope>
       <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/ojdbc6.jar</systemPath>
+
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/net.sf.ehcache/ehcache-core -->
     <dependency>
       <groupId>net.sf.ehcache</groupId>
-      <artifactId>ehcache</artifactId>
-      <version>2.8.3</version>
+      <artifactId>ehcache-core</artifactId>
+      <version>2.6.5</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.mybatis.caches/mybatis-ehcache -->
+    <dependency>
+      <groupId>org.mybatis.caches</groupId>
+      <artifactId>mybatis-ehcache</artifactId>
+      <version>1.0.2</version>
+    </dependency>
+
   </dependencies>
   <build>
     <resources>

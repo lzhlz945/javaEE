@@ -27,7 +27,7 @@ public class Test {
     }
 
     public SqlSessionFactory getSqlSessionFactory() throws IOException {
-        String resource = "myBits/mybatis.xml";
+        String resource = "mybatis.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         return (new SqlSessionFactoryBuilder()).build(inputStream);
     }

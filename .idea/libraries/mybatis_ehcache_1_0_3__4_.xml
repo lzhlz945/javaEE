@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="mybatis-ehcache-1.0.3 (4)">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/zh-mybatis-spring-mvc/src/main/webapp/WEB-INF/lib/mybatis-ehcache-1.0.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/zh-mybatis-spring-mvc/src/main/webapp/WEB-INF/lib/ojdbc6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/zh-mybatis-spring-mvc/src/main/webapp/WEB-INF/lib/slf4j-api-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/zh-mybatis-spring-mvc/src/main/webapp/WEB-INF/lib/slf4j-log4j12-1.6.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

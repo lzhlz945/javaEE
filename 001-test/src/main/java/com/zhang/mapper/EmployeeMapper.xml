@@ -50,7 +50,7 @@
 		select id,last_name,email,gender  from tbl_employee
 		 where id = #{id}
 	</select>
-    <select id="getId" resultType="employee" databaseId="oracle">
+    <select id="getId5" resultType="employee" databaseId="oracle">
 		select id,last_name,email,gender  from tbl_employee
 		 where id = #{id}
 	</select>
