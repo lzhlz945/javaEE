@@ -288,8 +288,8 @@ public class Test {
             EmployeeMapper mapper1 = sqlSession.getMapper(EmployeeMapper.class);
             EmployeeMapper mapper2 = sqlSession1.getMapper(EmployeeMapper.class);
             Employee e1 = mapper1.getId(1);
-            sqlSession.commit();
             Employee e2 = mapper2.getId(1);
+            sqlSession.commit();
             System.out.println(e1);
             System.out.println(e2);
 
