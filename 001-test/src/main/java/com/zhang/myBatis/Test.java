@@ -199,4 +199,51 @@ public class Test {
 
 
     }
+
+    /**
+     * mybatis一级缓存 失效情况：
+     * 1、sqlSession不同
+     * 2、查询条件改变
+     * 3、清空了一级缓存
+     * 4、在第一次查之间进行了其他数据库curd操作
+     * 5、
+     * @throws IOException
+     */
+    @org.junit.jupiter.api.Test
+    public void test10() throws IOException {
+        SqlSessionFactory factory = this.getSqlSessionFactory();
+        SqlSession sqlSession = factory.openSession();
+        SqlSession sqlSession1 = factory.openSession();
+        try {
+
+         /*失败1
+           EmployeeMapper  mapper = sqlSession.getMapper(EmployeeMapper .class);
+            EmployeeMapper  mapper1 = sqlSession1.getMapper(EmployeeMapper .class);
+
+            Employee employee = new Employee(1, "s", "0", null);
+            Employee e1 = mapper.getId(1);
+            Employee e2 = mapper1.getId(1);*/
+            /*失败2
+            EmployeeMapper  mapper = sqlSession.getMapper(EmployeeMapper .class);
+            Employee e1 = mapper.getId(1);
+            Employee e2 = mapper.getId(3);*/
+          /*失败3
+            EmployeeMapper  mapper = sqlSession.getMapper(EmployeeMapper .class);
+            Employee employee = new Employee(122, "s", "0", null);
+            Employee e1 = mapper.getId(1);
+            mapper.insertEmployee1(employee);
+            Employee e2 = mapper.getId(1);*/
+          /*失败4
+            EmployeeMapper  mapper = sqlSession.getMapper(EmployeeMapper .class);
+            Employee e1 = mapper.getId(1);
+            sqlSession.clearCache();
+            Employee e2 = mapper.getId(1);
+            System.out.println(e1);
+            System.out.println(e2);*/
+
+            sqlSession.commit();
+        } finally {
+            sqlSession.close();
+        }
+    }
 }
