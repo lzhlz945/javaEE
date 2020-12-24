@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/001-test/001-test.iml" filepath="$PROJECT_DIR$/001-test/001-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nxgc-mybatis/nxgc-mybatis.iml" filepath="$PROJECT_DIR$/nxgc-mybatis/nxgc-mybatis.iml" />
       <module fileurl="file://$PROJECT_DIR$/zh-mybatis-spring-mvc/zh-mybatis-spring-mvc.iml" filepath="$PROJECT_DIR$/zh-mybatis-spring-mvc/zh-mybatis-spring-mvc.iml" />
     </modules>
   </component>

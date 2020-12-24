@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/nxgc-mybatis" />
     <file type="web" url="file://$PROJECT_DIR$/zh-mybatis-spring-mvc" />
   </component>
   <component name="JavaScriptSettings">
@@ -11,6 +12,7 @@
       <list>
         <option value="$PROJECT_DIR$/001-test/pom.xml" />
         <option value="$PROJECT_DIR$/zh-mybatis-spring-mvc/pom.xml" />
+        <option value="$PROJECT_DIR$/nxgc-mybatis/pom.xml" />
       </list>
     </option>
   </component>
