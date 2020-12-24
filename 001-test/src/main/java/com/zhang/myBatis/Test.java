@@ -27,14 +27,14 @@ public class Test {
     }
 
     public SqlSessionFactory getSqlSessionFactory() throws IOException {
-        String resource = "mybatis.xml";
+        String resource = "myBits/mybatis.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         return (new SqlSessionFactoryBuilder()).build(inputStream);
     }
     @org.junit.jupiter.api.Test
     public void test01() throws IOException {
 
-        String resources="mybatis.xml";
+        String resources= "myBits/mybatis.xml";
         InputStream inputStream = Resources.getResourceAsStream(resources);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession session = sqlSessionFactory.openSession(true);
@@ -51,7 +51,7 @@ public class Test {
     @org.junit.jupiter.api.Test
     public void test02() throws IOException {
 
-        String resources="mybatis.xml";
+        String resources= "myBits/mybatis.xml";
         InputStream inputStream = Resources.getResourceAsStream(resources);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession session = sqlSessionFactory.openSession();
