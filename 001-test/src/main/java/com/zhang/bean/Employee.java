@@ -3,6 +3,8 @@ package com.zhang.bean;
 import lombok.Data;
 import org.apache.ibatis.type.Alias;
 
+import java.io.Serializable;
+
 /**
  * @author: create by zhl
  * @version: v1.0
@@ -11,7 +13,8 @@ import org.apache.ibatis.type.Alias;
  */
 @Data
 //@Alias("qq") 第三种：类上注解的形式
-public class Employee {
+public class Employee implements Serializable {
+
     private Integer id;
     private String lastName;
     private String gender;
