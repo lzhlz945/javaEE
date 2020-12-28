@@ -1,6 +1,9 @@
 package com.zhang.test;
 
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.zhang.bean.Employee;
 import com.zhang.mapper.EmployeeMapper;
 import org.apache.ibatis.io.Resources;
@@ -11,6 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 public class MyBatisTest {
 
@@ -119,9 +123,25 @@ public class MyBatisTest {
 	 * 
 	 */
 	@Test
-	public void testPlugin(){
-		
-		
+	public void testPageHelper() throws IOException {
+		SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
+		// 2、获取sqlSession对象
+		SqlSession openSession = sqlSessionFactory.openSession();
+
+		EmployeeMapper mapper = openSession.getMapper(EmployeeMapper.class);
+		 PageHelper.startPage(1, 6);
+		List<Employee> list = mapper.getList();
+		PageInfo<Employee> info = new PageInfo<Employee>(list,3);
+		for (Employee employee : list) {
+			System.out.println(employee);
+
+		}
+		/*System.out.println(objects.getPageNum());
+		System.out.println(objects.getTotal());*/
+		System.out.println(info.getList());
+		System.out.println(info.getPages());
+		System.out.println(info.getTotal());
+
 	}
 
 }
