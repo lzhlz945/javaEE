@@ -123,3 +123,14 @@
         </bean>
        <mvc:annotation-driven/>
        <mvc:default-servlet-handler/>
+
+
+mybatis使用存储过程
+  	<select id="getPageByProcedure" statementType="CALLABLE" databaseId="oracle">
+  		{call hello_test(
+  			#{start,mode=IN,jdbcType=INTEGER},
+  			#{end,mode=IN,jdbcType=INTEGER},
+  			#{count,mode=OUT,jdbcType=INTEGER},
+  			#{emps,mode=OUT,jdbcType=CURSOR,javaType=ResultSet,resultMap=PageEmp}
+  		)}
+  	</select>
