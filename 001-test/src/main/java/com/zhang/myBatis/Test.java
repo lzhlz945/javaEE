@@ -51,7 +51,7 @@ public class Test {
     @org.junit.jupiter.api.Test
     public void test02() throws IOException {
 
-        String resources= "myBits/mybatis.xml";
+        String resources= "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resources);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession session = sqlSessionFactory.openSession();
@@ -127,10 +127,6 @@ public class Test {
 
             DepartmentMapper  mapper = sqlSession.getMapper(DepartmentMapper .class);
             Department byIdAndE = mapper.getByIdAndE(1);
-            List<Employee> emps = byIdAndE.getEmps();
-            for (Employee emp : emps) {
-                System.out.println(emp);
-            }
 
             sqlSession.commit();
         } finally {

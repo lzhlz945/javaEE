@@ -9,12 +9,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="001-test" />
         <module name="nxgc-mybatis" />
+        <module name="plugin-001" />
         <module name="zh-mybatis-spring-mvc" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="001-test" target="1.8" />
       <module name="nxgc-mybatis" target="1.8" />
+      <module name="plugin-001" target="1.8" />
       <module name="zh-mybatis-spring-mvc" target="1.8" />
     </bytecodeTargetLevel>
   </component>

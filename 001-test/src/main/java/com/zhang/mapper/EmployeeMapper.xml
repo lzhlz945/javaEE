@@ -55,7 +55,7 @@
 		 where id = #{id}
 	</select>
 
-    <select id="getId1" resultType="employee" databaseId="mysql" >
+    <select id="getId1" resultType="employee"  >
 		select id,last_name,email,gender  from tbl_employee
 		<if test="_parameter != null">
 
