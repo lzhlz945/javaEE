@@ -7,6 +7,7 @@ import com.github.pagehelper.PageInfo;
 import com.zhang.bean.Employee;
 import com.zhang.mapper.EmployeeMapper;
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -15,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.UUID;
 
 public class MyBatisTest {
 
@@ -142,6 +144,38 @@ public class MyBatisTest {
 		System.out.println(info.getPages());
 		System.out.println(info.getTotal());
 
+	}
+
+	/**
+	 * 使用 openSession(ExecutorType.BATCH);
+	 *    预编译-》1 参数设置--》10000次  执行--》1次
+	 * 不使用
+	 *    预编译 、参数设置 执行 --》10000次
+	 *
+	 *
+	 * @throws IOException
+	 */
+
+	@Test
+	public void testBATH() throws IOException {
+		SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
+		SqlSession openSession = sqlSessionFactory.openSession(ExecutorType.BATCH);
+
+		try {
+			EmployeeMapper mapper = openSession.getMapper(EmployeeMapper.class);
+			long start = System.currentTimeMillis();
+			for (int i = 0; i < 10000; i++) {
+
+			mapper.add(new Employee(UUID.randomUUID().toString().substring(0,5),i+"@12.com","1"));
+			}
+
+			openSession.commit();
+			long end = System.currentTimeMillis();
+			System.out.println("批量插入所用时间："+(end-start));//6112
+		} finally {
+
+			openSession.close();
+		}
 	}
 
 }

@@ -10,5 +10,6 @@ public interface EmployeeMapper {
 	public Employee getEmpById(Integer id);
 
 	List<Employee> getList();
+	void add(Employee employee);
 
 }

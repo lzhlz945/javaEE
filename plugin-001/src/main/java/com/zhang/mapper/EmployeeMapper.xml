@@ -20,4 +20,9 @@ public Employee getEmpById(Integer id);
 
 			select id,last_name lastName,email,gender from tbl_employee
 	</select>
+
+	<insert id="add">
+
+		insert  into tbl_employee(last_name,email,gender) values (#{lastName},#{email},#{gender})
+	</insert>
 </mapper>
