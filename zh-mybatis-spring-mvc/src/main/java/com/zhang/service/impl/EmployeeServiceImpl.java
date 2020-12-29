@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.UUID;
 
@@ -31,7 +32,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
         for (int i = 0; i < 1000; i++) {
 
-        mapper.addEmps(new Employee(UUID.randomUUID().toString().substring(0,4),"1","wsw");
+        mapper.addEmps(new Employee(UUID.randomUUID().toString().substring(0,4),"1","wsw"));
         }
         List<Employee> list= employeeMapper.getEmps();
         return list;
