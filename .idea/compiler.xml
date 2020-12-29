@@ -8,7 +8,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="001-test" />
-        <module name="mybatisPlus-001" />
         <module name="nxgc-mybatis" />
         <module name="plugin-001" />
         <module name="zh-mybatis-spring-mvc" />
