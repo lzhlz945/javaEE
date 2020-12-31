@@ -18,5 +18,5 @@ public interface EmployeeMapper {
 
 
     List<Employee> getEmps();
-    List<Employee> addEmps(Employee employee);
+
 }
