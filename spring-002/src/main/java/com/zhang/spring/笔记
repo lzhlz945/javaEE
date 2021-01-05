@@ -68,3 +68,21 @@ https://repo.spring.io/release/org/springframework/spring/ 下载地址
                    <value>set2</value>
                </set>
            </property>
+
+五、在集合里面设置对象类型值
+  <!--创建多个 course 对象-->
+  < bean id= "course1" class= "com.atguigu.spring5.collectiontype.Course">
+  < property name= "cname" value=5 "Spring5 框架" "></ property>
+  </ bean>
+  < bean id= "course2" class= "com.atguigu.spring5.collectiontype.Course">
+  < property name= "cname" value=s "MyBatis 框架" "></ property>
+  </ bean>
+  <!--注入 list 集合类型，值是对象-->
+  < property name= "courseList">
+  < list>
+  < ref bean= "course1"></ ref>
+  < ref bean= "course2"></ ref>
+  </ list>
+  </ property>
+
+  list的泛型必须是该对象

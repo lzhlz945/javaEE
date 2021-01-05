@@ -39,7 +39,23 @@
         </property>
 
 
+        <property name="cusList">
+            <list>
+                <ref bean="cus1"></ref>
+                <ref bean="cus2"></ref>
+            </list>
+        </property>
 
     </bean>
+
+    <bean id="cus1" class="com.zhang.spring.Cus">
+        <property name="cname" value="array1"/>
+    </bean>
+
+    <bean id="cus2" class="com.zhang.spring.Cus">
+        <property name="cname" value="array2"/>
+    </bean>
+
+
 
 </beans>

@@ -16,6 +16,8 @@ public class Stu {
     //4 set 集合类型属性
     private Set<String> sets;
 
+    private List<Cus> cusList;
+
     public void setSets(Set<String> sets) {
         this. sets = sets;
     }
