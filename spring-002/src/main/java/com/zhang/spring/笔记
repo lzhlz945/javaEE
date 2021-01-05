@@ -98,3 +98,14 @@ https://repo.spring.io/release/org/springframework/spring/ 下载地址
       <bean class="com.zhang.spring.Stu" id="stu3">
           <property name="list" ref="bookList"/>
       </bean>
+
+七、factoryBean 定义的bean和返回的bean可以不一样
+    public class MyBean implements FactoryBean<Cus> {
+        @Override
+        public Cus getObject() throws Exception {
+            Class<?> aClass = Class.forName("com.zhang.spring.Cus");
+            Cus o = (Cus) aClass.newInstance();
+             o.setCname("hahah");
+            return o;
+        }
+     再注册ben到spring中 返回bean的类型是FactoryBean的泛型

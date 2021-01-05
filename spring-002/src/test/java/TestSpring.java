@@ -1,4 +1,6 @@
+import com.zhang.spring.Cus;
 import com.zhang.spring.Stu;
+import com.zhang.spring.factoryBean.MyBean;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -26,6 +28,20 @@ public class TestSpring {
 
         ApplicationContext context=new ClassPathXmlApplicationContext("application-002.xml");
         Stu bean = context.getBean("stu3", Stu.class);
+        System.out.println(bean.toString());
+
+
+    }
+
+    /**
+     *
+   * <util:
+     */
+    @Test
+    public void testFactoryBean(){
+
+        ApplicationContext context=new ClassPathXmlApplicationContext("factoryBean-config.xml");
+        Cus bean = context.getBean("myBean", Cus.class);
         System.out.println(bean.toString());
 
 
