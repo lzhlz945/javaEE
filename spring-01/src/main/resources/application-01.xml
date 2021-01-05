@@ -41,4 +41,25 @@
             <null/>
         </property>
     </bean>
+
+    <bean class="com.zhang.spring.beans.Emp" id="emp">
+        <property name="name" value="员工1号"/>
+        <property name="id" value="1"/>
+        <property name="dept">
+            <bean class="com.zhang.spring.beans.Dept" id="dept">
+                <property name="name" value="金融部"/>
+            </bean>
+        </property>
+    </bean>
+
+    <!--级联赋值-->
+    <bean class="com.zhang.spring.beans.Emp" id="emp2">
+        <property name="name" value="员工1号"/>
+        <property name="id" value="1"/>
+        <property name="dept" ref="dept1"/>
+        <property name="dept.name" value="sss"/>
+    </bean>
+    <bean class="com.zhang.spring.beans.Dept" id="dept1">
+        <property name="name" value="sd"/>
+    </bean>
 </beans>
