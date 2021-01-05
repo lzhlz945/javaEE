@@ -6,4 +6,12 @@
 
     <!--factoryBean,注册的在xml中的类和调用返回的类可以不一样-->
     <bean id="myBean" class="com.zhang.spring.factoryBean.MyBean"></bean>
+
+    <!--单例还是多利莫西
+      默认：单例
+      scope=""
+    -->
+    <bean class="com.zhang.spring.Cus" id="cus" scope="prototype">
+        <property name="cname" value="123"/>
+    </bean>
 </beans>

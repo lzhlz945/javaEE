@@ -108,4 +108,11 @@ https://repo.spring.io/release/org/springframework/spring/ 下载地址
              o.setCname("hahah");
             return o;
         }
-     再注册ben到spring中 返回bean的类型是FactoryBean的泛型
+     在注册后返回的bean就是FactoryBean的泛型
+
+八、bean的实例
+   singleton 和 prototype 区别
+   第一 singleton 单实例，prototype 多实例
+   第二 设置 scope 值是 singleton 时候，加载 spring 配置文件时候就会创建单实例对象
+   设置 scope 值是 prototype 时候，不是在加载 spring 配置文件时候创建 对象，在调用
+   getBean 方法时候创建多实例对象

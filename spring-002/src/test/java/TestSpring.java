@@ -35,7 +35,7 @@ public class TestSpring {
 
     /**
      *
-   * <util:
+   * factoryBean定义和返回的对象类型可以不一样
      */
     @Test
     public void testFactoryBean(){
@@ -43,6 +43,23 @@ public class TestSpring {
         ApplicationContext context=new ClassPathXmlApplicationContext("factoryBean-config.xml");
         Cus bean = context.getBean("myBean", Cus.class);
         System.out.println(bean.toString());
+
+
+    }
+   /**
+     *
+     * bean的是单例还是？
+     *
+     */
+    @Test
+    public void testSingleTon(){
+
+        ApplicationContext context=new ClassPathXmlApplicationContext("factoryBean-config.xml");
+        Cus bean2 = context.getBean("cus", Cus.class);
+        Cus bean1 = context.getBean("cus", Cus.class);
+        System.out.println(bean1);
+        System.out.println(bean2);
+        System.out.println(bean1==bean2);
 
 
     }
