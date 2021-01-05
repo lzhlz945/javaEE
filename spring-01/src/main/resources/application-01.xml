@@ -11,4 +11,34 @@
     </bean>
 
 
+    <!--测试ioc的get和set、构造器注入Di-->
+  <bean id="student" class="com.zhang.spring.entity.Student">
+      <!--Di：就是注册属性-->
+      <property name="name" value="zs"/>
+      <property name="age" value="18"/>
+      <property name="school" ref="school"/>
+  </bean>
+
+    <bean class="com.zhang.spring.entity.School" id="school">
+        <property name="name" value="重庆大学"/>
+        <property name="stuId" value="001"/>
+    </bean>
+
+    <!--使用构造器注入-->
+    <bean class="com.zhang.spring.entity.Student1" id="student1">
+        <constructor-arg name="name" value="zs"/>
+        <constructor-arg name="age" value="18"/>
+        <constructor-arg name="school" ref="school"/>
+    </bean>
+
+    <bean class="com.zhang.spring.entity.School" id="school2">
+        <property name="name">
+            <value>
+                <![CDATA[<<南京>>]]>
+            </value>
+        </property>
+        <property name="stuId">
+            <null/>
+        </property>
+    </bean>
 </beans>

@@ -18,3 +18,20 @@ https://repo.spring.io/release/org/springframework/spring/ 下载地址
    （2）ApplicationContext：BeanFactory 接口的子接口，提供更多更强大的功能，一般由开发人
    员进行使用
    * 加载配置文件时候就会把在配置文件对象进行创建
+
+   ioc在创建对象时：创建对象时候，默认也是执行无参数构造方法完成对象创建
+   DI：依赖注入，就是注入属性
+
+三、IOC 操作 Bean 管理（xml 注入其他类型属性）
+
+  1、字面量
+  （1）null 值
+  <!--null 值--> <property name="address">
+   <null/>
+  </property> （2）属性值包含特殊符号
+  <!--属性值包含特殊符号
+   1 把<>进行转义 &lt; &gt;
+   2 把带特殊符号内容写到 CDATA
+  --><property name="address">
+   <value><![CDATA[<<南京>>]]></value>
+  </property>
