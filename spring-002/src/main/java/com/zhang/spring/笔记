@@ -86,3 +86,15 @@ https://repo.spring.io/release/org/springframework/spring/ 下载地址
   </ property>
 
   list的泛型必须是该对象
+
+
+六、命名空间util 要加入约束和命名空间
+  <util:list id="bookList">
+      <value>1</value>
+      <value>2</value>
+      <value>3</value>
+  </util:list>
+
+      <bean class="com.zhang.spring.Stu" id="stu3">
+          <property name="list" ref="bookList"/>
+      </bean>

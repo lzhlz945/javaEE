@@ -16,4 +16,18 @@ public class TestSpring {
 
 
     }
+
+  /**
+     * 名称空间 util
+   * <util:
+     */
+    @Test
+    public void testUtil(){
+
+        ApplicationContext context=new ClassPathXmlApplicationContext("application-002.xml");
+        Stu bean = context.getBean("stu3", Stu.class);
+        System.out.println(bean.toString());
+
+
+    }
 }
