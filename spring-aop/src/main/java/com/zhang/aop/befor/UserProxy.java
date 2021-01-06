@@ -2,6 +2,7 @@ package com.zhang.aop.befor;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Aspect
+@Order(1)
 public class UserProxy {
     @Before(value ="execution(* com.zhang.aop.bean.User.add(..))")
     public void befor(){
@@ -24,7 +26,7 @@ public class UserProxy {
         System.out.println("afterReturning.........");
     }
     //最终通知
-    @After(value = "execution(* com.atguigu.spring5.aopanno.User.add(..))")
+    @After(value = "execution(* com.zhang.aop.bean.User.add(..))")
     public void after() {
         System.out.println("after.........");
     }
@@ -43,7 +45,7 @@ public class UserProxy {
         System.out.println("环绕之后.........");
     }
     //相同的切入点抽取
-    @Pointcut(value = "execution(* com.zhang.aop.bean.User.*(..)")
+    @Pointcut(value = "execution(* com.zhang.aop.bean.User.add(..))")
     public void pointCut(){
 
     }

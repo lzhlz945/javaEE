@@ -163,3 +163,19 @@ https://repo.spring.io/release/org/springframework/spring/ 下载地址
        public void befor1(){
 
        }
+
+
+十四、
+    有多个增强类多同一个方法进行增强，设置增强类优先级
+   （1）在增强类上面添加注解 @Order(数字类型值)，数字类型值越小优先级越高
+   @Component
+   @Aspect
+   @Order(1)
+   public class PersonProxy
+
+   (2)完全使用注解开发 （1）创建配置类，不需要创建 xml 配置文件
+   @Configuration
+   @ComponentScan(basePackages = {"com.atguigu"})
+   @EnableAspectJAutoProxy(proxyTargetClass = true)
+   public class ConfigAop {
+   }
