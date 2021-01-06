@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import com.zhang.spring.autowire.Emp;
 import com.zhang.spring.bean.MyBean;
+import com.zhang.spring.bean.Service1;
 import com.zhang.spring.bean.TestBean;
 import lombok.Data;
 import org.junit.Test;
@@ -61,6 +62,18 @@ public class AppTest
         DataSource dataSource = context.getBean("dataSource", DataSource.class);
 
         System.out.println(dataSource.getConnection());
+    }
+
+    /**
+     *测试注解
+     */
+    @Test
+    public void test04() throws SQLException {
+        ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext("annotation-001.xml");
+        Service1 service1 = context.getBean("service1", Service1.class);
+
+        String name = service1.getName();
+        System.out.println(name);
     }
 
 
