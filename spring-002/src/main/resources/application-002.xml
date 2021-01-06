@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+    <bean class="com.zhang.spring.Stu" id="stu">
+        <!--数组-->
+        <property name="courses">
+            <array>
+                <value>天空</value>
+                <value>大海</value>
+            </array>
+        </property>
+
+        <!--list-->
+        <property name="list">
+            <list>
+                <value>list1</value>
+                <value>list2</value>
+            </list>
+        </property>
+
+        <!--map-->
+        <property name="maps">
+            <map>
+                <entry key="map1" value="map1Value1"/>
+                <entry key="map2" value="map1Value2"/>
+            </map>
+        </property>
+
+        <!--set-->
+        <property name="sets">
+            <set>
+                <value>set1</value>
+                <value>set2</value>
+            </set>
+        </property>
+
+
+
+    </bean>
+
+</beans>
