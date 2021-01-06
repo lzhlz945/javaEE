@@ -10,6 +10,9 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import javax.sql.DataSource;
+import java.sql.SQLException;
+
 /**
  * Unit test for simple App.
  */
@@ -47,6 +50,17 @@ public class AppTest
         Emp testBean = context.getBean("emp2", Emp.class);
 
         System.out.println(testBean);
+    }
+
+    /**
+     *测试连接池
+     */
+    @Test
+    public void test03() throws SQLException {
+        ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext("properties-spring.xml");
+        DataSource dataSource = context.getBean("dataSource", DataSource.class);
+
+        System.out.println(dataSource.getConnection());
     }
 
 

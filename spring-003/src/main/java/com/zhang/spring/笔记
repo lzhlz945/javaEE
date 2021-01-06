@@ -92,3 +92,6 @@ https://repo.spring.io/release/org/springframework/spring/ 下载地址
 六、自动注入：
        * byName:根据属性和id名一致
        * byType:属性的类型一致，只匹配一个
+
+
+七、引入properties，例如阿里连接池
