@@ -1,17 +1,18 @@
 package com.zhang.spring.autowire;
 
-public class Emp {
-    private Dept dept;
-    public void setDept(Dept dept) {
-        this.dept = dept;
-    }
+import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
-    @Override
-    public String toString() {
-        return "Emp{" +
-                "dept=" + dept +
-                '}';
-    }
+@Component(value = "emp")
+@Data
+public class Emp {
+    @Autowired
+    @Qualifier(value = "dept")
+    private Dept dept;
+
 
     public void test() {
         System.out.println(dept);

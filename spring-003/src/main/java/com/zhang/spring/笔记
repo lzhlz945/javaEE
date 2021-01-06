@@ -110,3 +110,14 @@ https://repo.spring.io/release/org/springframework/spring/ 下载地址
         <context:exclude-filter type="annotation"
                                 expression="org.springframework.stereotype.Controller"/>
         </context:component-scan>
+
+九、 @Autowired
+     根据属性类型进行自动装配
+    @Qualifier(value = "userServiceImpl1")
+     如果接口有多个实现类，就可以使用这个来区分，根据名称自动装配
+
+     @Resources 是javax的，默认根据类型自动注入
+       根据名称(name="");
+
+十、完全配置类
+    new AnnotationConfigApplicationContext(SpringConfig.class);

@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/spring-002/spring-002.iml" filepath="$PROJECT_DIR$/spring-002/spring-002.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-003/spring-003.iml" filepath="$PROJECT_DIR$/spring-003/spring-003.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-01/spring-01.iml" filepath="$PROJECT_DIR$/spring-01/spring-01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-aop/spring-aop.iml" filepath="$PROJECT_DIR$/spring-aop/spring-aop.iml" />
       <module fileurl="file://$PROJECT_DIR$/zh-mybatis-spring-mvc/zh-mybatis-spring-mvc.iml" filepath="$PROJECT_DIR$/zh-mybatis-spring-mvc/zh-mybatis-spring-mvc.iml" />
     </modules>
   </component>
