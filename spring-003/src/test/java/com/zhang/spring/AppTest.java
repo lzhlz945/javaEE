@@ -2,6 +2,7 @@ package com.zhang.spring;
 
 import static org.junit.Assert.assertTrue;
 
+import com.zhang.spring.autowire.Emp;
 import com.zhang.spring.bean.MyBean;
 import com.zhang.spring.bean.TestBean;
 import lombok.Data;
@@ -33,6 +34,19 @@ public class AppTest
         testBean.getName();
         context.close();
 
+    }
+
+    /**
+     * 自动注入：
+     * byName:根据属性和id名一致
+     * byType:属性的类型一致，只匹配一个
+     */
+    @Test
+    public void test02(){
+        ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext("autowire.xml");
+        Emp testBean = context.getBean("emp2", Emp.class);
+
+        System.out.println(testBean);
     }
 
 

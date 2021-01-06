@@ -88,3 +88,7 @@ https://repo.spring.io/release/org/springframework/spring/ 下载地址
   （5）把 bean 实例传递 bean 后置处理器的方法 postProcessAfterInitialization
   （6）bean 可以使用了（对象获取到了）
   （7）当容器关闭时候，调用 bean 的销毁的方法（需要进行配置销毁的方法）
+
+六、自动注入：
+       * byName:根据属性和id名一致
+       * byType:属性的类型一致，只匹配一个
