@@ -2,6 +2,8 @@ package com.zhang.spring;
 
 import static org.junit.Assert.assertTrue;
 
+import com.zhang.spring.beans.Dept;
+import com.zhang.spring.beans.Emp;
 import com.zhang.spring.entity.School;
 import com.zhang.spring.entity.Student;
 import com.zhang.spring.entity.Student1;
@@ -99,6 +101,27 @@ public class AppTest
 
         School school2 = context.getBean("school2", School.class);
         System.out.println(school2);
+
+
+    }
+
+    @Test
+    public void test(){
+        ApplicationContext context=new ClassPathXmlApplicationContext("application-01.xml");
+        Emp emp = context.getBean("emp", Emp.class);
+        System.out.println(emp);
+
+
+    }
+
+    /**
+     * 级联赋值
+     */
+    @Test
+    public void testjlhz(){
+        ApplicationContext context=new ClassPathXmlApplicationContext("application-01.xml");
+        Emp emp = context.getBean("emp2", Emp.class);
+        System.out.println(emp);
 
 
     }

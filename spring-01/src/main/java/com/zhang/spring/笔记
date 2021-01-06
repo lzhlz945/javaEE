@@ -22,7 +22,7 @@ https://repo.spring.io/release/org/springframework/spring/ 下载地址
    ioc在创建对象时：创建对象时候，默认也是执行无参数构造方法完成对象创建
    DI：依赖注入，就是注入属性
 
-三、IOC 操作 Bean 管理（xml 注入其他类型属性）
+三、4
 
   1、字面量
   （1）null 值
@@ -35,3 +35,20 @@ https://repo.spring.io/release/org/springframework/spring/ 下载地址
   --><property name="address">
    <value><![CDATA[<<南京>>]]></value>
   </property>
+
+四、级联的方法：
+  1、<property name="dept" ref="dept1"/>
+            <property name="dept.name" value="sss"/>
+        </bean>
+        <bean class="com.zhang.spring.beans.Dept" id="dept1">
+            <property name="name" value="sd"/>
+        </bean>
+
+  2、  <property name="dept" ref="dept1"/>
+
+  3、属性中用bean
+      <property name="dept">
+                 <bean class="com.zhang.spring.beans.Dept" id="dept">
+                     <property name="name" value="金融部"/>
+                 </bean>
+             </property>

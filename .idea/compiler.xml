@@ -11,7 +11,9 @@
         <module name="nxgc-mybatis" />
         <module name="plugin-001" />
         <module name="spring-002" />
+        <module name="spring-003" />
         <module name="spring-01" />
+        <module name="spring-aop" />
         <module name="zh-mybatis-spring-mvc" />
       </profile>
     </annotationProcessing>
@@ -21,8 +23,10 @@
       <module name="nxgc-mybatis" target="1.8" />
       <module name="plugin-001" target="1.8" />
       <module name="spring-002" target="1.8" />
+      <module name="spring-003" target="1.8" />
       <module name="spring-01" target="1.8" />
       <module name="spring-02" target="1.5" />
+      <module name="spring-aop" target="1.8" />
       <module name="zh-mybatis-spring-mvc" target="1.8" />
     </bytecodeTargetLevel>
   </component>
