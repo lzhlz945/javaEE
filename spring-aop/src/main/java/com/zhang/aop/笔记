@@ -179,3 +179,10 @@ https://repo.spring.io/release/org/springframework/spring/ 下载地址
    @EnableAspectJAutoProxy(proxyTargetClass = true)
    public class ConfigAop {
    }
+
+十五、基于xml的aop
+  1、定义增强类和被增强类
+  2、配置aop
+  3、定义pointCut
+  4、申明切面(注入切面)
+  5、设置增强的方法
