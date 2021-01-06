@@ -2,6 +2,7 @@ package com.zhang.spring;
 
 import static org.junit.Assert.assertTrue;
 
+import com.zhang.spring.bean.MyBean;
 import com.zhang.spring.bean.TestBean;
 import lombok.Data;
 import org.junit.Test;
@@ -33,4 +34,6 @@ public class AppTest
         context.close();
 
     }
+
+
 }
