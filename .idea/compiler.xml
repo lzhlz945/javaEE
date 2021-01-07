@@ -15,6 +15,7 @@
         <module name="spring-01" />
         <module name="spring-aop" />
         <module name="spring-jdbc01" />
+        <module name="spring-log42" />
         <module name="spring-tx01" />
         <module name="zh-mybatis-spring-mvc" />
       </profile>
@@ -30,6 +31,7 @@
       <module name="spring-02" target="1.5" />
       <module name="spring-aop" target="1.8" />
       <module name="spring-jdbc01" target="1.8" />
+      <module name="spring-log42" target="1.8" />
       <module name="spring-tx01" target="1.8" />
       <module name="zh-mybatis-spring-mvc" target="1.8" />
     </bytecodeTargetLevel>

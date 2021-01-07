@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/spring-01/spring-01.iml" filepath="$PROJECT_DIR$/spring-01/spring-01.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-aop/spring-aop.iml" filepath="$PROJECT_DIR$/spring-aop/spring-aop.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-jdbc01/spring-jdbc01.iml" filepath="$PROJECT_DIR$/spring-jdbc01/spring-jdbc01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-log42/spring-log42.iml" filepath="$PROJECT_DIR$/spring-log42/spring-log42.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-tx01/spring-tx01.iml" filepath="$PROJECT_DIR$/spring-tx01/spring-tx01.iml" />
       <module fileurl="file://$PROJECT_DIR$/zh-mybatis-spring-mvc/zh-mybatis-spring-mvc.iml" filepath="$PROJECT_DIR$/zh-mybatis-spring-mvc/zh-mybatis-spring-mvc.iml" />
     </modules>
