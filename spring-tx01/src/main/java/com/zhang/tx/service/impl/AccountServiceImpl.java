@@ -30,7 +30,7 @@ public class AccountServiceImpl implements AccountService {
             Integer zs=100;
             accountDao.transferByZs(zs);
 
-            int a=10/0;
+          /*  int a=10/0;*/
             //ls账户增加100
             accountDao.transferByLs(zs);
 

@@ -16,7 +16,7 @@ import javax.sql.DataSource;
  * @date:2021/1/7
  */
 @Configuration
-@ComponentScan(value = {"com.zhang.tx"})
+@ComponentScan(basePackages = { "com.zhang.tx"})
 @EnableTransactionManagement
 public class SpringTx {
     //创建数据库连接池
