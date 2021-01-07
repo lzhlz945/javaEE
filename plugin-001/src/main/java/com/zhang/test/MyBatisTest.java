@@ -1,10 +1,9 @@
 package com.zhang.test;
 
 
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.zhang.bean.Employee;
+import com.zhang.tx.bean.Employee;
 import com.zhang.mapper.EmployeeMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.ExecutorType;

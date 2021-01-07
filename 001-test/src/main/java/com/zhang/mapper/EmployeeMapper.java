@@ -1,6 +1,6 @@
 package com.zhang.mapper;
 
-import com.zhang.bean.Employee;
+import com.zhang.tx.bean.Employee;
 import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Param;
 

@@ -12,7 +12,7 @@
     <!--数据库连接信息-->
 <context:property-placeholder location="classpath:properties/jdbc.properties"/>
     <!-- Spring希望管理所有的业务逻辑组件，等。。。 -->
-    <context:component-scan base-package="com.zhang.service">
+    <context:component-scan base-package="com.zhang.tx.service">
         <context:exclude-filter type="annotation"
                                 expression="org.springframework.stereotype.Controller" />
     </context:component-scan>
@@ -36,8 +36,8 @@
     <!-- 扫描所有的mapper接口的实现，让这些mapper能够自动注入；
      base-package：指定mapper接口的包名
       -->
-    <mybatis-spring:scan base-package="com.zhang.dao"/>
+    <mybatis-spring:scan base-package="com.zhang.tx.dao"/>
     <!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.zhang.dao"></property>
+        <property name="basePackage" value="com.zhang.tx.dao"></property>
     </bean> -->
 </beans>

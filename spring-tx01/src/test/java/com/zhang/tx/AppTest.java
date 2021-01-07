@@ -2,9 +2,7 @@ package com.zhang.tx;
 
 import static org.junit.Assert.assertTrue;
 
-import com.zhang.bean.Account;
-import com.zhang.service.AccountService;
-import com.zhang.service.impl.AccountServiceImpl;
+import com.zhang.tx.service.impl.AccountServiceImpl;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -15,8 +13,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class AppTest 
 {
 
-    private ApplicationContext context=new ClassPathXmlApplicationContext("tx-spring.xml");
-    private AccountService accountService=context.getBean("accountServiceImpl",AccountServiceImpl.class);
+    private ApplicationContext context=new ClassPathXmlApplicationContext("spring.xml");
+    private AccountServiceImpl accountService=context.getBean("accountServiceImpl",AccountServiceImpl.class);
     /**
      * Rigorous Test :-)
      */
@@ -26,8 +24,21 @@ public class AppTest
         assertTrue( true );
     }
 
-    @Test
+    /**
+     * 基于注解的事务
+     */
+   /* @Test
     public void test01(){
+        accountService.transfer();
+    }*/
+
+    /**
+     * 基于xml的事务
+     */
+    @Test
+    public void test02(){
+        /*ApplicationContext context=new ClassPathXmlApplicationContext("spring.xml");
+        AccountService accountService=context.getBean("accountServiceImpl",AccountServiceImpl.class);*/
         accountService.transfer();
     }
 }

@@ -43,7 +43,7 @@
         select id,last_name as lastName,email,gender from tbl_employee where id = #{id} and last_name=#{lastName}
     </select>
 
-    <select id="getEmpById"  resultType="com.zhang.bean.Employee">
+    <select id="getEmpById"  resultType="com.zhang.tx.bean.Employee">
 		select id,last_name as lastName,email,gender from tbl_employee where id = #{id}
 	</select>
     <select id="getId" useCache="true" resultType="employee" databaseId="mysql">
@@ -69,11 +69,11 @@
     //delete
     void deleteEmployee(Employee employee);-->
 
-    <insert id="insertEmployee" parameterType="com.zhang.bean.Employee" useGeneratedKeys="true" keyProperty="id" databaseId="oracle" >
+    <insert id="insertEmployee" parameterType="com.zhang.tx.bean.Employee" useGeneratedKeys="true" keyProperty="id" databaseId="oracle" >
         insert into tbl_employee(id,last_name,email,gender) values (#{id},#{lastName},#{email},#{gender})
 
     </insert>
-    <insert id="insertEmployee1" parameterType="com.zhang.bean.Employee"  flushCache="false">
+    <insert id="insertEmployee1" parameterType="com.zhang.tx.bean.Employee" flushCache="false">
         <if test="_databaseId == 'oracle'">
 
         insert into tbl_employee(id,last_name,email,gender) values (#{id},#{lastName},#{email},#{gender,jdbcType=NULL})
@@ -84,7 +84,7 @@
         </if>
 
     </insert>
-    <insert id="insertEmployee2" parameterType="com.zhang.bean.Employee"  databaseId="oracle" >
+    <insert id="insertEmployee2" parameterType="com.zhang.tx.bean.Employee" databaseId="oracle" >
         insert into tbl_employee(id,last_name,email,gender) values (#{id},#{lastName},#{email},#{gender})
 
     </insert>

@@ -1,6 +1,6 @@
 package com.zhang.mapper;
 
-import com.zhang.bean.Department;
+import com.zhang.tx.bean.Department;
 
 /**
  * @author: create by zhl

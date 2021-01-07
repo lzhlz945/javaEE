@@ -1,7 +1,7 @@
 package com.zhang.mapper;
 
 
-import com.zhang.bean.Employee;
+import com.zhang.tx.bean.Employee;
 
 import java.util.List;
 

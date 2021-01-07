@@ -1,7 +1,7 @@
 package com.zhang.myBatis;
 
-import com.zhang.bean.Department;
-import com.zhang.bean.Employee;
+import com.zhang.tx.bean.Department;
+import com.zhang.tx.bean.Employee;
 import com.zhang.mapper.DepartmentMapper;
 import com.zhang.mapper.EmployeeMapper;
 import com.zhang.mapper.EmployeeMapper1;

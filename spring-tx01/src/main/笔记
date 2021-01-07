@@ -226,4 +226,4 @@ https://repo.spring.io/release/org/springframework/spring/ 下载地址
       oracle：
             读已提交；
             串行化；
-        默认读已提交
+        默认读已提交  execution(* *..service..*.*(..))

@@ -1,4 +1,4 @@
-package com.zhang.bean;
+package com.zhang.tx.bean;
 
 public class Employee {
     /**

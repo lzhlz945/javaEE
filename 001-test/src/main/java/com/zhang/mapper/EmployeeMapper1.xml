@@ -7,7 +7,7 @@
     <!--第一resultMap:
      id:引用唯一标识； type:指定的bean类型
     -->
-    <resultMap id="resultMapByEmployee" type="com.zhang.bean.Employee">
+    <resultMap id="resultMapByEmployee" type="com.zhang.tx.bean.Employee">
         <!--id:主键的，column=数据库的字段名，property：javaBean的对应属性名-->
         <id column="id" property="id"/>
         <!---->
@@ -17,7 +17,7 @@
     </resultMap>
 
     <!--第一种关联其他表的字段-->
-    <resultMap id="resultMapByEmployee1" type="com.zhang.bean.Employee">
+    <resultMap id="resultMapByEmployee1" type="com.zhang.tx.bean.Employee">
         <!--id:主键的，column=数据库的字段名，property：javaBean的对应属性名-->
         <id column="id" property="id"/>
         <!---->
@@ -30,7 +30,7 @@
     </resultMap>
 
     <!--第二种关联其他表的字段-->
-    <resultMap id="resultMapByEmployee3" type="com.zhang.bean.Employee">
+    <resultMap id="resultMapByEmployee3" type="com.zhang.tx.bean.Employee">
         <!--id:主键的，column=数据库的字段名，property：javaBean的对应属性名-->
         <id column="id" property="id"/>
         <!---->
@@ -41,7 +41,7 @@
 		property="dept"：指定哪个属性是联合的对象employee中的dept
 		javaType:指定这个属性对象的类型[不能省略]
 		-->
-        <association property="dept"  javaType="com.zhang.bean.Department">
+        <association property="dept"  javaType="com.zhang.tx.bean.Department">
         <result column="did" property="id"/>
         <result column="dept_name" property="deptName"/>
         </association>
@@ -50,7 +50,7 @@
 
     <!--第三种：分步封装-->
 
-    <resultMap id="resultMapByEmployee4" type="com.zhang.bean.Employee">
+    <resultMap id="resultMapByEmployee4" type="com.zhang.tx.bean.Employee">
         <id column="id" property="id"/>
         <result column="last_name" property="lastName"/>
         <result column="gender" property="gender"/>
@@ -84,22 +84,22 @@
     </select>
 
     <!--List<Employee> selectByDeptId(Integer deptId);-->
-    <select id="selectByDeptId" resultType="com.zhang.bean.Employee">
+    <select id="selectByDeptId" resultType="com.zhang.tx.bean.Employee">
          select id,last_name lastName,email,gender from tbl_employee where dp_id = #{deptId}
     </select>
 
-    <resultMap id="ss" type="com.zhang.bean.Employee">
+    <resultMap id="ss" type="com.zhang.tx.bean.Employee">
         <id column="id" property="id"/>
         <!---->
         <result column="last_name" property="lastName"/>
         <result column="gender" property="gender"/>
         <result column="email" property="email"/>
         <discriminator javaType="string" column="gender">
-            <case value="0" resultType="com.zhang.bean.Employee">
+            <case value="0" resultType="com.zhang.tx.bean.Employee">
                 <association property="dept" select="com.zhang.mapper.DepartmentMapper.getById" column="id">
                 </association>
             </case>
-            <case value="1" resultType="com.zhang.bean.Employee">
+            <case value="1" resultType="com.zhang.tx.bean.Employee">
                 <id column="id" property="id"/>
                 <result column="last_name" property="email"/>
                 <result column="gender" property="lastName"/>

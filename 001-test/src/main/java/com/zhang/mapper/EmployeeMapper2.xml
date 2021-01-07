@@ -146,7 +146,7 @@
         </if>
 
     </sql>
-    <select id="getSql" resultType="com.zhang.bean.Employee" databaseId="mysql">
+    <select id="getSql" resultType="com.zhang.tx.bean.Employee" databaseId="mysql">
         select <include refid="12">
          <property name="x" value="id"/>
     </include> from tbl_employee

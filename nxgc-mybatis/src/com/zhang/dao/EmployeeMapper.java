@@ -1,6 +1,6 @@
-package com.zhang.dao;
+package com.zhang.tx.dao;
 
-import com.zhang.bean.Employee;
+import com.zhang.tx.bean.Employee;
 
 public interface EmployeeMapper {
     /**

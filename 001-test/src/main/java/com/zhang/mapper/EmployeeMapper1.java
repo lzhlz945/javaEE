@@ -1,11 +1,8 @@
 package com.zhang.mapper;
 
-import com.zhang.bean.Employee;
-import org.apache.ibatis.annotations.MapKey;
-import org.apache.ibatis.annotations.Param;
+import com.zhang.tx.bean.Employee;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author: create by zhl

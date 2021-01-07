@@ -1,7 +1,7 @@
 package com.zhang.web;
 
-import com.zhang.bean.Employee;
-import com.zhang.service.EmployeeService;
+import com.zhang.tx.bean.Employee;
+import com.zhang.tx.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

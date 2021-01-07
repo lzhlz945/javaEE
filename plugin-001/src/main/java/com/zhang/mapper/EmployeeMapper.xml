@@ -11,12 +11,12 @@ resultType：返回值类型
 
 public Employee getEmpById(Integer id);
  -->
-	<select id="getEmpById" resultType="com.zhang.bean.Employee"
+	<select id="getEmpById" resultType="com.zhang.tx.bean.Employee"
 		>
 		select id,last_name lastName,email,gender from tbl_employee where id = #{id}
 	</select>
 
-	<select id="getList" resultType="com.zhang.bean.Employee">
+	<select id="getList" resultType="com.zhang.tx.bean.Employee">
 
 			select id,last_name lastName,email,gender from tbl_employee
 	</select>
