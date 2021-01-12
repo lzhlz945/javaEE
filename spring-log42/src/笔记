@@ -84,7 +84,8 @@ https://repo.spring.io/release/org/springframework/spring/ 下载地址
   3、bean 的后置处理器，bean 生命周期有七步 实现BeanPostProcessor
   （1）通过构造器创建 bean 实例（无参数构造）
   （2）为 bean 的属性设置值和对其他 bean 引用（调用 set 方法）
-  （3）把 bean 实例传递 bean 后置处理器的方法 postProcessBeforeInitialization （4）调用 bean 的初始化的方法（需要进行配置初始化的方法）
+  （3）把 bean 实例传递 bean 后置处理器的方法 postProcessBeforeInitialization
+  （4）调用 bean 的初始化的方法（需要进行配置初始化的方法）
   （5）把 bean 实例传递 bean 后置处理器的方法 postProcessAfterInitialization
   （6）bean 可以使用了（对象获取到了）
   （7）当容器关闭时候，调用 bean 的销毁的方法（需要进行配置销毁的方法）
@@ -235,3 +236,13 @@ https://repo.spring.io/release/org/springframework/spring/ 下载地址
    为空，参数值可以为空
 
 二十、    private static final Logger log=LoggerFactory.getLogger(LogTest.class);
+
+
+二十一、Spring5 核心容器支持函数式风格 GenericApplicationContext
+      GenericApplicationContext context=new GenericApplicationContext();
+              //清空容器
+              context.refresh();
+              //参数1 ：全类名
+              context.registerBean(User.class,()-> new User());
+              User bean = context.getBean("com.zhang.log42.User", User.class);
+              System.out.println(bean);

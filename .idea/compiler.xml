@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="001-test" />
+        <module name="mvc-001" />
         <module name="nxgc-mybatis" />
         <module name="plugin-001" />
         <module name="spring-002" />
@@ -22,6 +23,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="001-test" target="1.8" />
+      <module name="mvc-001" target="1.8" />
       <module name="mybatisPlus-001" target="1.8" />
       <module name="nxgc-mybatis" target="1.8" />
       <module name="plugin-001" target="1.8" />
