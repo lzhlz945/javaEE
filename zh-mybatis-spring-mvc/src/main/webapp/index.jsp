@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="getemps.do">查询所有员工</a>
+<a href="getemps.do">查询所有员工dd</a>
 </body>
 </html>
