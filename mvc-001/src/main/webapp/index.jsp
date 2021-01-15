@@ -9,6 +9,15 @@
 <a href="${Path}/hello.do">点击</a>
 <br>
 
+<a href="${Path}/testMap">testMap</a>
+<br>
+
+<a href="${Path}/testMaModel">testMaModel</a>
+<br>
+
+<a href="${Path}/testSession">testSession</a>
+<br>
+
 <a href="${Path}/testParam?id=100">点击testParam</a>
 <br>
 

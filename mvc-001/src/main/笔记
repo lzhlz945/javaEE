@@ -35,3 +35,10 @@
 五、POJO
 
     自定义返回类，可以级联
+
+
+六、返回的model map ->modelMap  @SessionAttributes
+
+   @SessionAttributes(value = {"user"},types = {String.class})
+   map.put("user",user);  value = {"user"}
+   map.put("mapAndSession","mapAndSessionTest"); types = {String.class}

@@ -18,6 +18,16 @@ public class User {
     private Adress adress;
     private String[] lll;
 
+    public User() {
+    }
+
+    public User(String userName, String password, String name, Integer age, String email) {
+        this.userName = userName;
+        this.password = password;
+        this.name = name;
+        this.age = age;
+        this.email = email;
+    }
 
     @Override
     public String toString() {

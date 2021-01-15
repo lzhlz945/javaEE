@@ -19,6 +19,12 @@
   <div align="center">
 
   <h1>点击跳转成功</h1>
+
+      map: ${requestScope.map}<br><br>
+      model: ${requestScope.model}<br><br>
+      session:${sessionScope.session}<br><br>
+      session-user:${sessionScope.user}<br><br>
+      mapAndSession:${sessionScope.mapAndSession}<br><br>
   </div>
 </body>
 </html>

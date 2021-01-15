@@ -2,7 +2,11 @@ package com.zhang.mvc.web;
 
 import com.zhang.mvc.pojo.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 /**
  * @author: create by zhl
@@ -10,8 +14,12 @@ import org.springframework.web.bind.annotation.*;
  * @description: com.zhang.mvc.web
  * @date:2021/1/12
  */
+
+@SessionAttributes(value = {"user"},types = {String.class})
 @Controller
 public class TestController {
+
+
 
     @RequestMapping("/hello.do")
     public String test(){
@@ -65,6 +73,29 @@ public class TestController {
     @RequestMapping(value = "/testPojo")
     public String test06(User user){
         System.out.println(user);
+        return "success";
+    }
+
+    @RequestMapping(value = "/testMap")
+    public String test07(Map<String,Object> map){
+        map.put("map","mapTest");
+        return "success";
+    }
+
+    @RequestMapping(value = "/testMaModel")
+    public String test07(Model model){
+        model.addAttribute("model","modelTest");
+        return "success";
+    }
+
+    @RequestMapping(value = "/testSession")
+    public String test07(HttpSession session,Map<String,Object> map){
+
+        session.setAttribute("session","sessionTest");
+        User user = new User("1","12","2",12,"ss");
+        map.put("user",user);
+        map.put("mapAndSession","mapAndSessionTest");
+
         return "success";
     }
 }
