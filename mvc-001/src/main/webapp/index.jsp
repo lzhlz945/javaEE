@@ -60,6 +60,18 @@
 </form>
 
 <br>
+<br>
+<h2>testModelAttribute</h2>
+<form action="${Path}/testModelAttribute">
+    账户：<input type="text" name="userName" /><br>
+    姓名：<input type="text" name="name" /><br>
+    年龄：<input type="text" name="age" /><br>
+    email：<input type="text" name="email" /><br>
+
+    <input type="submit" value="提交" />
+</form>
+
+<br>
 
 <iframe name="i" align="center" ></iframe>
 <ul>

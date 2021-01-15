@@ -15,11 +15,23 @@ import java.util.Map;
  * @date:2021/1/12
  */
 
-@SessionAttributes(value = {"user"},types = {String.class})
+//@SessionAttributes(value = {"user"},types = {String.class})
 @Controller
 public class TestController {
 
+    @ModelAttribute
+    public void modelAttribute(Map<String,Object> map){
+        User user = new User("1","13","2",12,"ss");
+        map.put("user",user);
+        System.out.println(user);
+    }
 
+    @RequestMapping("/testModelAttribute")
+    public String testModelAttribute(User user){
+        System.out.println(user);
+
+        return "success";
+    }
 
     @RequestMapping("/hello.do")
     public String test(){
