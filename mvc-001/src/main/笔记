@@ -22,3 +22,9 @@
    reset风格  get查询 put跟新 post添加 delete删除
 
    HiddenHttpMethodFilter 可以将post转化为DELETE 和POST
+
+四、注解Param、Header
+
+   @RequestParam(value = "id",defaultValue = "1",required = false) Integer id
+
+   @RequestHeader(value = "Accept-Language") String id

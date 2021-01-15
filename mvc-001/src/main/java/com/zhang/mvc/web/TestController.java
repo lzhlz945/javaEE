@@ -1,9 +1,7 @@
 package com.zhang.mvc.web;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author: create by zhl
@@ -41,6 +39,18 @@ public class TestController {
     @RequestMapping(value = "/test/put/{id}",method = RequestMethod.PUT)
     public String test03(@PathVariable("id") Integer id){
         System.out.println("put请求"+id);
+        return "success";
+    }
+
+    @RequestMapping(value = "/testParam",method = RequestMethod.GET)
+    public String test04(@RequestParam(value = "id",defaultValue = "1",required = false) Integer id){
+        System.out.println("RequestParam请求"+id);
+        return "success";
+    }
+
+    @RequestMapping(value = "/testHeader")
+    public String test05(@RequestHeader(value = "Accept-Language") String id){
+        System.out.println("RequestParam请求"+id);
         return "success";
     }
 }
