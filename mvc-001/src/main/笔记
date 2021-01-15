@@ -30,3 +30,8 @@
    @RequestHeader(value = "Accept-Language") String id
 
    +@CookieValue(value = "JSESSIONID") String sessionId
+
+
+五、POJO
+
+    自定义返回类，可以级联

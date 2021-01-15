@@ -1,5 +1,6 @@
 package com.zhang.mvc.web;
 
+import com.zhang.mvc.pojo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -57,6 +58,13 @@ public class TestController {
     @RequestMapping(value = "/testCookie")
     public String test06(@CookieValue(value = "JSESSIONID") String sessionId){
         System.out.println("CookieValue请求"+sessionId);
+        return "success";
+    }
+
+
+    @RequestMapping(value = "/testPojo")
+    public String test06(User user){
+        System.out.println(user);
         return "success";
     }
 }
