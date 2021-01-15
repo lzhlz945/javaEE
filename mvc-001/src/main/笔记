@@ -5,7 +5,7 @@
     更加精确化
 
 
-@PathVariable 映射
+二、@PathVariable 映射
 
    @PathVariable 映射 URL 绑定的占位符
    • 带占位符的 URL 是 Spring3.0 新增的功能，该功能在
@@ -15,3 +15,10 @@
 
    @RequestMapping(/url/{id})
    public String test(@PathVariable("id") Integer id)
+
+三、
+   使用${Path}  web.xml 版本大于2.3
+
+   reset风格  get查询 put跟新 post添加 delete删除
+
+   HiddenHttpMethodFilter 可以将post转化为DELETE 和POST
