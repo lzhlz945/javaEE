@@ -28,3 +28,5 @@
    @RequestParam(value = "id",defaultValue = "1",required = false) Integer id
 
    @RequestHeader(value = "Accept-Language") String id
+
+   +@CookieValue(value = "JSESSIONID") String sessionId

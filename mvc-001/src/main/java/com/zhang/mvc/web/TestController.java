@@ -50,7 +50,13 @@ public class TestController {
 
     @RequestMapping(value = "/testHeader")
     public String test05(@RequestHeader(value = "Accept-Language") String id){
-        System.out.println("RequestParam请求"+id);
+        System.out.println("RequestHeader请求"+id);
+        return "success";
+    }
+
+    @RequestMapping(value = "/testCookie")
+    public String test06(@CookieValue(value = "JSESSIONID") String sessionId){
+        System.out.println("CookieValue请求"+sessionId);
         return "success";
     }
 }

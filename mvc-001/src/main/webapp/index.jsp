@@ -13,6 +13,9 @@
 <br>
 
 <a href="${Path}/testHeader?id=100">点击testHeader</a>
+
+
+<br><a href="${Path}/testCookie">点击testCookie</a>
 <br>
 
 <a href="${Path}/test/get/1">get请求</a>
