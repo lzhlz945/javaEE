@@ -54,3 +54,15 @@
       </bean>
 
       <fmt:message key="i18n.password"/>
+
+
+八、自定义视图
+    1、实现View,并加入到spring中
+    2、在mvc：xml中：
+
+          <!-- 配置视图  BeanNameViewResolver 解析器: 使用视图的名字来解析视图 -->
+          <!-- 通过 order 属性来定义视图解析器的优先级, order 值越小优先级越高 -->
+          <bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+              <property name="order" value="100"></property>
+          </bean>
+

@@ -21,6 +21,9 @@
 <a href="${Path}/testParam?id=100">点击testParam</a>
 <br>
 
+<a href="${Path}/myView">点击自定义视图</a>
+<br>
+
 <a href="${Path}/testHeader?id=100">点击testHeader</a>
 
 

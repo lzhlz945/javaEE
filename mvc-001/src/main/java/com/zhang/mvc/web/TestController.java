@@ -110,4 +110,14 @@ public class TestController {
 
         return "success";
     }
+
+    /*
+    * 自定义视图
+    * */
+
+    @RequestMapping("/myView")
+    public String myView1(){
+
+        return "myView";
+    }
 }
