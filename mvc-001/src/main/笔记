@@ -66,3 +66,9 @@
               <property name="order" value="100"></property>
           </bean>
 
+九、rest风格不建议使用.do和.html
+
+    前端会出现404
+
+      <mvc:default-servlet-handler/>
+      <mvc:annotation-driven/>
