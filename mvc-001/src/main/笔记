@@ -72,3 +72,26 @@
 
       <mvc:default-servlet-handler/>
       <mvc:annotation-driven/>
+
+
+十、<a></a> 超链接转换成post请求
+
+    1、 <a class="delete" href="/deleteEmps/${emp.id}"></a>
+    2、 <form action="" method="POST" >
+         <input type="hidden" name="DELETE"/>
+        </form>
+    3、
+      $(function({
+         $(".delete").click(function(){
+             var href= $(this).attr("href");
+             $("form").attr("action",href).submit();
+
+         })
+
+
+      })
+
+
+
+
+
