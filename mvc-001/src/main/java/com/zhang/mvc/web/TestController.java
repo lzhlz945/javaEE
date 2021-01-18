@@ -120,4 +120,13 @@ public class TestController {
 
         return "myView";
     }
+
+    /**
+     * 重定向
+     */
+    @RequestMapping("/testRedirect")
+    public String redirect(){
+        System.out.println("test_Redirect");
+        return "redirect:/testMap";
+    }
 }

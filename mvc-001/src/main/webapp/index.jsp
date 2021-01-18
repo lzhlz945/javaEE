@@ -9,6 +9,9 @@
 <a href="${Path}/hello.do">点击</a>
 <br>
 
+<a href="${Path}/testRedirect">testRedirect</a>
+<br>
+
 <a href="${Path}/testMap">testMap</a>
 <br>
 
