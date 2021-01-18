@@ -42,3 +42,15 @@
    @SessionAttributes(value = {"user"},types = {String.class})
    map.put("user",user);  value = {"user"}
    map.put("mapAndSession","mapAndSessionTest"); types = {String.class}
+
+
+七、InternalResourceViewResolver
+  • 若项目中使用了 JSTL，则 SpringMVC 会自动把视图由
+  InternalResourceView 转为 JstlView
+  • 若使用 JSTL 的 fmt 标签则需要在 SpringMVC 的配置文件中配置国际 化资源文件
+
+      <bean class="org.springframework.context.support.ResourceBundleMessageSource" id="messageSource">
+          <property name="basename" value="i18n"/>
+      </bean>
+
+      <fmt:message key="i18n.password"/>

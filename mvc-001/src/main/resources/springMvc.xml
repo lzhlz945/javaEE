@@ -18,6 +18,10 @@
         <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
      </bean>
+
+    <bean class="org.springframework.context.support.ResourceBundleMessageSource" id="messageSource">
+        <property name="basename" value="i18n"/>
+    </bean>
     <mvc:annotation-driven/>
     <mvc:default-servlet-handler/>
 
