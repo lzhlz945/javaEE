@@ -172,3 +172,25 @@
      后者用于在 Spring 上下文中构造前者
 
 
+十五、 数据格式化
+    • FormattingConversionServiceFactroyBean 内部已经注册了 : – NumberFormatAnnotationFormatterFactroy：支持对数字类型的属性
+    使用 @NumberFormat 注解
+    – JodaDateTimeFormatAnnotationFormatterFactroy：支持对日期类型
+    的属性使用 @DateTimeFormat 注解
+    • 装配了 FormattingConversionServiceFactroyBean 后，就可
+    以在 Spring MVC 入参绑定及模型数据输出时使用注解驱动
+    了。<mvc:annotation-driven/> 默认创建的
+    ConversionService 实例即为
+    FormattingConversionServiceFactroyBean
+
+
+    实例：
+        1、mvc:xml 驱动注解
+           <mvc:annotation-driven/> 默认创建的ConversionService
+           实例即为FormattingConversionServiceFactroyBean
+
+       @DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
+       private Date date;
+
+       @NumberFormat(pattern="#,###,###.#")
+       private float number

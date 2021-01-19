@@ -29,7 +29,9 @@
     </bean>
 
 
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven conversion-service="conversionService2"></mvc:annotation-driven>
+
+    <bean class="org.springframework.format.support.FormattingConversionService" id="conversionService2"></bean>
     <mvc:default-servlet-handler/>
 
 </beans>
