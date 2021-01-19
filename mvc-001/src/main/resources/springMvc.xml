@@ -35,7 +35,17 @@
 
     <bean class="org.springframework.format.support.FormattingConversionService" id="conversionService2"></bean>
     <mvc:default-servlet-handler/>
+    <!-- 配置 MultipartResolver -->
 
+
+
+    <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+
+    <property value="UTF-8" name="defaultEncoding"/>
+
+    <property value="1024000" name="maxUploadSize"/>
+
+</bean>
 
     <mvc:view-controller path="/i18n2" view-name="i18n2"/>
     <mvc:view-controller path="/i18n1" view-name="i18n1"/>

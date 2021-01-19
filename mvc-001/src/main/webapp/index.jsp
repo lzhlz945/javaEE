@@ -5,6 +5,14 @@
 %>
 <html>
 <body>
+<form action="testFileUpload" method="POST" enctype="multipart/form-data">
+    File: <input type="file" name="file"/>
+    Desc: <input type="text" name="desc"/>
+    <input type="submit" value="Submit"/>
+</form>
+<br>
+<br>
+
 
 <h2>Hello World!</h2>
 <a href="${Path}/hello.do">点击</a>

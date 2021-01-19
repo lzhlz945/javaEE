@@ -43,6 +43,8 @@
           <element id="library" level="project" name="Maven: net.sf.ehcache:ehcache-core:2.6.5" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.6.1" />
           <element id="library" level="project" name="Maven: org.mybatis.caches:mybatis-ehcache:1.0.2" />
+          <element id="library" level="project" name="Maven: commons-io:commons-io:2.4" />
+          <element id="library" level="project" name="Maven: commons-fileupload:commons-fileupload:1.4" />
         </element>
       </element>
       <element id="directory" name="META-INF">

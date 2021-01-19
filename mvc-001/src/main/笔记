@@ -286,3 +286,55 @@
 
            <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+
+
+十八、mvc文件上传初步
+    1、<form action="testFileUpload" method="POST" enctype="multipart/form-data">
+          File: <input type="file" name="file"/>
+          Desc: <input type="text" name="desc"/>
+          <input type="submit" value="Submit"/>
+      </form>
+
+    2、 加入jar commons-fileUpload  commons-io
+
+    3、   <!-- 配置 MultipartResolver -->
+
+           <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+
+           <property value="UTF-8" name="defaultEncoding"/>
+
+           <property value="1024000" name="maxUploadSize"/>
+
+    4、@RequestMapping("/testFileUpload")
+          public String testFileUpload(@RequestParam("desc") String desc,
+                                       @RequestParam("file") MultipartFile file) throws IOException{
+              System.out.println("desc: " + desc);
+              System.out.println("OriginalFilename: " + file.getOriginalFilename());
+              System.out.println("InputStream: " + file.getInputStream());
+              return "success";
+          }
+
+    servlet 文件上传
+
+           //1、判断是不是分段文件
+              if(ServletFileUpload.isMultipartContent(request)){
+                  //获取FileItemFactory
+                  FileItemFactory factor=new DiskFileItemFactory();
+                  ServletFileUpload upload = new ServletFileUpload(factor);
+                  //获取表单list集合信息
+                  try {
+                      List<FileItem> items = upload.parseRequest(request);
+                      for(FileItem item:items){
+                          //判断表单是否是特殊的，
+                          if(item.isFormField()){
+                              System.out.println(item.getFieldName());
+                              System.out.println(item.getString("UTF-8"));
+                          }else {
+                              System.out.println(item.getFieldName());
+                              System.out.println(item.getName());
+                              item.write(new File("E:\\"+item.getName()));
+                          }
+                      }
+                  } catch (Exception e) {
+                      e.printStackTrace();
+                  }

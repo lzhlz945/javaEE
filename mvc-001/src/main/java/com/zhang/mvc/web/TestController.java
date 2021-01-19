@@ -6,8 +6,10 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -146,6 +148,19 @@ public class TestController {
     }
 
 
+    /**
+     * 文件上传
+     */
+
+
+    @RequestMapping("/testFileUpload")
+    public String testFileUpload(@RequestParam("desc") String desc,
+                                 @RequestParam("file") MultipartFile file) throws IOException{
+        System.out.println("desc: " + desc);
+        System.out.println("OriginalFilename: " + file.getOriginalFilename());
+        System.out.println("InputStream: " + file.getInputStream());
+        return "success";
+    }
 
 
 }
