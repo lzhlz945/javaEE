@@ -248,3 +248,36 @@
         	   <form:errors path="birth"></form:errors>
 
 
+
+
+十七、国际化：
+      提示消息的国际化
+      • 每个属性在数据绑定和数据校验发生错误时，都会生成一个对应的 FieldError 对象。
+
+      • 当一个属性校验失败后，校验框架会为该属性生成 4 个消
+      息代码，这些代码以校验注解类名为前缀，结合
+      modleAttribute、属性名及属性类型名生成多个对应的消
+      息代码：例如 User 类中的 password 属性标准了一个 @Pattern 注
+      解，当该属性值不满足 @Pattern 所定义的规则时, 就会产生以下 4
+      个错误代码： – Pattern.user.password
+      – Pattern.password
+      – Pattern.java.lang.String
+      – Pattern
+      • 当使用 Spring MVC 标签显示错误消息时， Spring MVC 会查看
+      WEB 上下文是否装配了对应的国际化消息，如果没有，则显示默认 的错误消息，否则使用国际化消息。
+      提示消息的国际化 • 若数据类型转换或数据格式转换时发生错误，或该有的参
+      数不存在，或调用处理方法时发生错误，都会在隐含模型
+      中创建错误消息。其错误代码前缀说明如下：
+      – required：必要的参数不存在。如 @RequiredParam(“param1”)
+      标注了一个入参，但是该参数不存在
+      – typeMismatch：在数据绑定时，发生数据类型不匹配的问题
+      – methodInvocation：Spring MVC 在调用处理方法时发生了错误
+      • 注册国际化资源文件
+
+       <!--注册国际化资源-->
+          <bean class="org.springframework.context.support.ResourceBundleMessageSource" id="messageSource">
+              <property name="basename" value="i18n"/>
+          </bean>
+
+
+

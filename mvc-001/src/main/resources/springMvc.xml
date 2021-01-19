@@ -24,7 +24,9 @@
         <property name="order" value="100"></property>
     </bean>
 
+   <!--注册国际化资源-->
     <bean class="org.springframework.context.support.ResourceBundleMessageSource" id="messageSource">
+
         <property name="basename" value="i18n"/>
     </bean>
 
