@@ -1,6 +1,8 @@
 package com.zhang.mvc.web;
 
 import com.zhang.mvc.pojo.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +20,9 @@ import java.util.Map;
 @SessionAttributes(value = {"user"},types = {String.class})
 @Controller
 public class TestController {
+
+    @Autowired
+    private ResourceBundleMessageSource messageSource;
 
 //    @ModelAttribute
 //    public void modelAttribute(Map<String,Object> map){
@@ -129,4 +134,18 @@ public class TestController {
         System.out.println("test_Redirect");
         return "redirect:/testMap";
     }
+
+    /**
+     * i18n-mvc-国际化
+     */
+
+    @RequestMapping("/testI18n")
+    public String i18n(){
+
+        return "i18n1";
+    }
+
+
+
+
 }

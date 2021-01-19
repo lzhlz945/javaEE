@@ -279,5 +279,10 @@
               <property name="basename" value="i18n"/>
           </bean>
 
+       不经过controller：
 
+           <mvc:view-controller path="/i18n2" view-name="i18n2"/>
+           <mvc:view-controller path="/i18n1" view-name="i18n1"/>
+
+           <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 

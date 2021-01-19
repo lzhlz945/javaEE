@@ -5,11 +5,15 @@
 %>
 <html>
 <body>
+
 <h2>Hello World!</h2>
 <a href="${Path}/hello.do">点击</a>
 <br>
 
 <a href="${Path}/testRedirect">testRedirect</a>
+<br>
+
+<a href="${Path}/testI18n">testI18n</a>
 <br>
 
 <a href="${Path}/testMap">testMap</a>

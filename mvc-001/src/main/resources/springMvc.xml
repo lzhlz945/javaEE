@@ -36,4 +36,7 @@
     <bean class="org.springframework.format.support.FormattingConversionService" id="conversionService2"></bean>
     <mvc:default-servlet-handler/>
 
+
+    <mvc:view-controller path="/i18n2" view-name="i18n2"/>
+    <mvc:view-controller path="/i18n1" view-name="i18n1"/>
 </beans>
