@@ -194,3 +194,57 @@
 
        @NumberFormat(pattern="#,###,###.#")
        private float number
+
+
+
+十六、Spring MVC 数据校验
+
+   • <mvc:annotation-driven/> 会默认装配好一个
+   LocalValidatorFactoryBean，通过在处理方法的入参上
+   标注 @valid 注解即可让 Spring MVC 在完成数据绑定后执行
+   数据校验的工作
+
+   Spring 本身并没有提供 JSR303 的实现，所以必须将
+   JSR303 的实现者的 jar 包放到类路径下
+
+   Spring MVC 数据校验
+   • <mvc:annotation-driven/> 会默认装配好一个
+   LocalValidatorFactoryBean，通过在处理方法的入参上标 注 @valid 注解即可让 Spring MVC 在完成数据绑定后执行
+   数据校验的工作
+   • 在已经标注了 JSR303 注解的表单/命令对象前标注一个
+   @Valid，Spring MVC 框架在将请求参数绑定到该入参对象
+   后，就会调用校验框架根据注解声明的校验规则实施校验 • Spring MVC 是通过对处理方法签名的规约来保存校验结果
+   的：前一个表单/命令对象的校验结果保存到随后的入参
+   中，这个保存校验结果的入参必须是 BindingResult 或
+   Errors 类型，这两个类都位于
+   org.springframework.validation 包中
+   Spring MVC 数据校验 • 需校验的 Bean 对象和其绑定结果对象或错误对象时成对出现的，它们 之间不允许声明其他的入参
+   • Errors 接口提供了获取错误信息的方法，如 getErrorCount() 或
+   getFieldErrors(String field)
+   • BindingResult 扩展了 Errors 接口
+   User和其绑定结果的对象 public String handle(@Valid User user, BindingResult userBindingResult, String sessionId,ModelMap mm, @Valid Dept dept, Errors deptErrors)
+   { Dept和其校验的结果对象
+
+
+   			1). 如何校验 ? 注解 ?
+   			①. 使用 JSR 303 验证标准
+   			②. 加入 hibernate validator 验证框架的 jar 包
+   			③. 在 SpringMVC 配置文件中添加 <mvc:annotation-driven />
+   			④. 需要在 bean 的属性上添加对应的注解
+   			⑤. 在目标方法 bean 类型的前面添加 @Valid 注解
+
+   实例
+       @Past
+       字段
+       @NotNull
+       字段
+     方法： public String input(@Valid User user,BindingResult b.Map map){
+          if报错信息{
+             return “input”;
+          }
+     }
+      前端：
+        Birth: <form:input path="birth"/>
+        	   <form:errors path="birth"></form:errors>
+
+
