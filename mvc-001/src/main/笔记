@@ -158,3 +158,17 @@
    }
 
 
+十四、数据格式化
+
+
+     • 对属性对象的输入/输出进行格式化，从其本质上讲依然
+     属于 “类型转换” 的范畴。
+     • Spring 在格式化模块中定义了一个实现
+     ConversionService 接口的
+     FormattingConversionService 实现类，该实现类扩展 了 GenericConversionService，因此它既具有类型转换的
+     功能，又具有格式化的功能
+     • FormattingConversionService 拥有一个
+     FormattingConversionServiceFactroyBean 工厂类，
+     后者用于在 Spring 上下文中构造前者
+
+
