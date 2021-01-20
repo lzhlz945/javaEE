@@ -45,7 +45,15 @@
 
     <property value="1024000" name="maxUploadSize"/>
 
-</bean>
+    </bean>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/testSession"/>
+           <bean class="com.zhang.mvc.interceptor.FirstInterseptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
     <mvc:view-controller path="/i18n2" view-name="i18n2"/>
     <mvc:view-controller path="/i18n1" view-name="i18n1"/>
