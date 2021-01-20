@@ -11,6 +11,13 @@
     <input type="submit" value="Submit"/>
 </form>
 <br>
+
+<form action="testException" method="GET" >
+
+    除数: <input type="number" name="number"/>
+    <input type="submit" value="Submit"/>
+</form>
+<br>
 <br>
 
 

@@ -12,6 +12,7 @@
 
     <context:component-scan base-package="com.zhang.mvc" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+
     </context:component-scan>
 
     <bean name="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -52,7 +53,7 @@
            <bean class="com.zhang.mvc.interceptor.FirstInterseptor"/>
 
         <mvc:interceptor>
-            <mvc:mapping path="/**"/>
+            <mvc:mapping path="/testMap"/>
             <mvc:exclude-mapping path="/testMap"/>
            <bean class="com.zhang.mvc.interceptor.SecInterceptor"/>
         </mvc:interceptor>

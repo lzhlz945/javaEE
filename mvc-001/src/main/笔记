@@ -341,7 +341,6 @@
 
 十九、文件下载
       1、返回值是ResponseEntity<byte[]> xiazai(HttpSession session){
-            1:获取流inputStream
              ServletContext context=session.getServletContext();
              InputStream in = servletContext.getResourceAsStream("/112.txt");
             2:创建出byte
@@ -367,3 +366,58 @@
 
    postHandler和afterCompletion 执行必要性preHandler返回true
    多个拦截器 是倒序执行。
+
+
+二十一、全局异常
+    1、主要注解 @ExceptionHandler
+               @ControllerAdvice
+
+               handle中多个异常处理，返回最近的异常
+               打印异常到页面可以用Model
+
+    2、全局异常
+        拿登录来说：
+           ①、自定义异常
+            public LoginException extends Exception(){
+
+               public LoginException(){}
+               public LoginException(String msg){
+                 super(msg);
+               }
+            }
+           ②、编写全局异常
+            @ExceptionHandler(value= LoginException.class)
+               @ResponseBody
+               public Object loginExceptionResolver(Exception e){
+
+                   e.printStackTrace();
+
+                   Map<String,Object> map = new HashMap<>();
+                   map.put("success",false);
+                   map.put("msg",e.getMessage());
+
+                   return map;
+
+               }
+
+          ③、在登录时验证 把异常抛出
+            if(user==null){
+
+                throw new LoginException();
+
+           }
+
+          拦截器异常
+
+               @ExceptionHandler(value= InterceptorException.class)
+               public String interceptorExceptionResolver(Exception e){
+
+                   System.out.println("处理没登陆");
+
+                   e.printStackTrace();
+
+                   return "redirect:/settings/user/toLogin.do";
+
+                   //return "redirect:/login.jsp";
+
+               }

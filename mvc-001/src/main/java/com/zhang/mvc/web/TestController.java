@@ -202,5 +202,29 @@ public class TestController {
 
     }
 
+    /**
+     * mvc:异常：
+     */
+    @RequestMapping("/testException")
+    public String testException(@RequestParam("number") Integer number){
+
+        System.out.println(10/number);
+        return "success";
+    }
+
+
+//    @ExceptionHandler(value = {ArithmeticException.class})
+//    public String arithmeticException(Exception e,Model model){
+//        System.out.println(e+"ArithmeticException");
+//        model.addAttribute("exception",e);
+//        return "error";
+//    }
+//
+//    @ExceptionHandler(value = {RuntimeException.class})
+//    public String arithmeticException1(Exception e,Model model){
+//        System.out.println(e+"RuntimeException");
+//        model.addAttribute("exception",e);
+//        return "error";
+//    }
 
 }
