@@ -1,0 +1,33 @@
+firmSxcw
+git commit -am""
+git reflog git log -- oneline  git reset --hard  git deff  
+git branch -v -av git branch name git checked
+git merge branch1 
+GitHub Desktop  查看本地分支 Git branch -v  查看远程分支 -a  
+在本地分支add commit push 后，远程上和本地中的并没有关联 git branch --set-upstream-to=origin/bran1
+在GitHub上 分支合并到master上
+ 点击菜单pull requests
+然后点击 New pull request
+
+然后到本地 master先与bran1合并 
+1.切换到自己项目所在的目录，右键选择GIT BASH Here
+
+2.在terminl窗口中依次输入命令：
+
+git pull
+
+git pull origin master
+
+git pull origin master --allow-unrelated-histories
+
+3.在idea中重新push自己的项目，成功！！！
+
+create user firmzdzcw identified by 888888;
+	 grant connect,resource,dba to firmzdzcw;
+
+
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	@Secured({ ProjectFunctionCode.PROJECTBASE_UPDATE })
+	public ReturnMessageRole updateProjectBase(ProjectBaseRole role) throws Exception {
+		ReturnMessageRole returnMsg = new ReturnMessageRole(false, JMtmpAuth

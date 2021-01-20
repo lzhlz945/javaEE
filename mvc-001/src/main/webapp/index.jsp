@@ -21,6 +21,9 @@
 <a href="${Path}/testRedirect">testRedirect</a>
 <br>
 
+<a href="${Path}/testxiazai">testxiazai/下载</a>
+<br>
+
 <a href="${Path}/testI18n">testI18n</a>
 <br>
 

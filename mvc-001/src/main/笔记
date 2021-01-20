@@ -338,3 +338,17 @@
                   } catch (Exception e) {
                       e.printStackTrace();
                   }
+
+十九、文件下载
+      1、返回值是ResponseEntity<byte[]> xiazai(HttpSession session){
+            1:获取流inputStream
+             ServletContext context=session.getServletContext();
+             InputStream in = servletContext.getResourceAsStream("/112.txt");
+            2:创建出byte
+             byte[] bytes=null;
+             bytes = new byte[in.available()];
+            3:创建出响应头
+              HttpHeaders("context-Disposition","attachment,filename=xx.xx");
+              new ResponseEntity<byte[]>(bytes,headers,HttpStatus.OK);
+
+      }
