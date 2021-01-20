@@ -48,10 +48,13 @@
     </bean>
 
     <mvc:interceptors>
+
+           <bean class="com.zhang.mvc.interceptor.FirstInterseptor"/>
+
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
-            <mvc:exclude-mapping path="/testSession"/>
-           <bean class="com.zhang.mvc.interceptor.FirstInterseptor"/>
+            <mvc:exclude-mapping path="/testMap"/>
+           <bean class="com.zhang.mvc.interceptor.SecInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 
