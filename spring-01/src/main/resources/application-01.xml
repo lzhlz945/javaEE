@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+    <bean class="com.zhang.spring.entity.User" id="user">
+        <property name="age" value="28"/>
+        <property name="name" value="hs"/>
+    </bean>
+
+
+    <!--测试ioc的get和set、构造器注入Di-->
+  <bean id="student" class="com.zhang.spring.entity.Student">
+      <!--Di：就是注册属性-->
+      <property name="name" value="zs"/>
+      <property name="age" value="18"/>
+      <property name="school" ref="school"/>
+  </bean>
+
+    <bean class="com.zhang.spring.entity.School" id="school">
+        <property name="name" value="重庆大学"/>
+        <property name="stuId" value="001"/>
+    </bean>
+
+    <!--使用构造器注入-->
+    <bean class="com.zhang.spring.entity.Student1" id="student1">
+        <constructor-arg name="name" value="zs"/>
+        <constructor-arg name="age" value="18"/>
+        <constructor-arg name="school" ref="school"/>
+    </bean>
+
+    <bean class="com.zhang.spring.entity.School" id="school2">
+        <property name="name">
+            <value>
+                <![CDATA[<<南京>>]]>
+            </value>
+        </property>
+        <property name="stuId">
+            <null/>
+        </property>
+    </bean>
+
+    <bean class="com.zhang.spring.beans.Emp" id="emp">
+        <property name="name" value="员工1号"/>
+        <property name="id" value="1"/>
+        <property name="dept">
+            <bean class="com.zhang.spring.beans.Dept" id="dept">
+                <property name="name" value="金融部"/>
+            </bean>
+        </property>
+    </bean>
+
+    <!--级联赋值-->
+    <bean class="com.zhang.spring.beans.Emp" id="emp2">
+        <property name="name" value="员工1号"/>
+        <property name="id" value="1"/>
+        <property name="dept" ref="dept1"/>
+        <property name="dept.name" value="sss"/>
+    </bean>
+    <bean class="com.zhang.spring.beans.Dept" id="dept1">
+        <property name="name" value="sd"/>
+    </bean>
+</beans>

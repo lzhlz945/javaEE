@@ -1,0 +1,118 @@
+https://repo.spring.io/release/org/springframework/spring/ 下载地址
+
+一、ioc原理
+   1、什么是 IOC
+   （1）控制反转，把对象创建和对象之间的调用过程，交给 Spring 进行管理
+   （2）使用 IOC 目的：为了耦合度降低
+   （3）做入门案例就是 IOC 实现
+   2、IOC 底层原理
+   （1）xml 解析、工厂模式、反射
+
+
+二、IOC（BeanFactory 接口）
+
+   1、IOC 思想基于 IOC 容器完成，IOC 容器底层就是对象工厂
+   2、Spring 提供 IOC 容器实现两种方式：（两个接口）
+   （1）BeanFactory：IOC 容器基本实现，是 Spring 内部的使用接口，不提供开发人员进行使用
+   * 加载配置文件时候不会创建对象，在获取对象（使用）才去创建对象
+   （2）ApplicationContext：BeanFactory 接口的子接口，提供更多更强大的功能，一般由开发人
+   员进行使用
+   * 加载配置文件时候就会把在配置文件对象进行创建
+
+   ioc在创建对象时：创建对象时候，默认也是执行无参数构造方法完成对象创建
+   DI：依赖注入，就是注入属性
+
+三、IOC 操作 Bean 管理（xml 注入其他类型属性）
+
+  1、字面量
+  （1）null 值
+  <!--null 值--> <property name="address">
+   <null/>
+  </property> （2）属性值包含特殊符号
+  <!--属性值包含特殊符号
+   1 把<>进行转义 &lt; &gt;
+   2 把带特殊符号内容写到 CDATA
+  --><property name="address">
+   <value><![CDATA[<<南京>>]]></value>
+  </property>
+
+四、spring属性注入关于数组集合、map
+    <!--数组-->
+           <property name="courses">
+               <array>
+                   <value>天空</value>
+                   <value>大海</value>
+               </array>
+           </property>
+
+           <!--list-->
+           <property name="list">
+               <list>
+                   <value>list1</value>
+                   <value>list2</value>
+               </list>
+           </property>
+
+           <!--map-->
+           <property name="maps">
+               <map>
+                   <entry key="map1" value="map1Value1"/>
+                   <entry key="map2" value="map1Value2"/>
+               </map>
+           </property>
+
+           <!--set-->
+           <property name="sets">
+               <set>
+                   <value>set1</value>
+                   <value>set2</value>
+               </set>
+           </property>
+
+五、在集合里面设置对象类型值
+  <!--创建多个 course 对象-->
+  < bean id= "course1" class= "com.atguigu.spring5.collectiontype.Course">
+  < property name= "cname" value=5 "Spring5 框架" "></ property>
+  </ bean>
+  < bean id= "course2" class= "com.atguigu.spring5.collectiontype.Course">
+  < property name= "cname" value=s "MyBatis 框架" "></ property>
+  </ bean>
+  <!--注入 list 集合类型，值是对象-->
+  < property name= "courseList">
+  < list>
+  < ref bean= "course1"></ ref>
+  < ref bean= "course2"></ ref>
+  </ list>
+  </ property>
+
+  list的泛型必须是该对象
+
+
+六、命名空间util 要加入约束和命名空间
+  <util:list id="bookList">
+      <value>1</value>
+      <value>2</value>
+      <value>3</value>
+  </util:list>
+
+      <bean class="com.zhang.spring.Stu" id="stu3">
+          <property name="list" ref="bookList"/>
+      </bean>
+
+七、factoryBean 定义的bean和返回的bean可以不一样
+    public class MyBean implements FactoryBean<Cus> {
+        @Override
+        public Cus getObject() throws Exception {
+            Class<?> aClass = Class.forName("com.zhang.spring.Cus");
+            Cus o = (Cus) aClass.newInstance();
+             o.setCname("hahah");
+            return o;
+        }
+     在注册后返回的bean就是FactoryBean的泛型
+
+八、bean的实例
+   singleton 和 prototype 区别
+   第一 singleton 单实例，prototype 多实例
+   第二 设置 scope 值是 singleton 时候，加载 spring 配置文件时候就会创建单实例对象
+   设置 scope 值是 prototype 时候，不是在加载 spring 配置文件时候创建 对象，在调用
+   getBean 方法时候创建多实例对象

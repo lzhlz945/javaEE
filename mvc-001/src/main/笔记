@@ -1,0 +1,423 @@
+一、@RequestMapping
+
+    @RequestMapping 的 value、method、params 及 heads
+    分别表示请求 URL、请求方法、请求参数及请求头的映射条件，他们之间是与的关系，联合使用多个条件可让请求映射
+    更加精确化
+
+
+二、@PathVariable 映射
+
+   @PathVariable 映射 URL 绑定的占位符
+   • 带占位符的 URL 是 Spring3.0 新增的功能，该功能在
+   SpringMVC 向 REST 目标挺进发展过程中具有里程碑的
+   意义 • 通过 @PathVariable 可以将 URL 中占位符参数绑定到控
+   制器处理方法的入参中：URL 中的 {xxx} 占位符可以通过 @PathVariable("xxx") 绑定到操作方法的入参中。
+
+   @RequestMapping(/url/{id})
+   public String test(@PathVariable("id") Integer id)
+
+三、
+   使用${Path}  web.xml 版本大于2.3
+
+   reset风格  get查询 put跟新 post添加 delete删除
+
+   HiddenHttpMethodFilter 可以将post转化为DELETE 和POST
+
+四、注解Param、Header
+
+   @RequestParam(value = "id",defaultValue = "1",required = false) Integer id
+
+   @RequestHeader(value = "Accept-Language") String id
+
+   +@CookieValue(value = "JSESSIONID") String sessionId
+
+
+五、POJO
+
+    自定义返回类，可以级联
+
+
+六、返回的model map ->modelMap  @SessionAttributes
+
+   @SessionAttributes(value = {"user"},types = {String.class})
+   map.put("user",user);  value = {"user"}
+   map.put("mapAndSession","mapAndSessionTest"); types = {String.class}
+
+
+七、InternalResourceViewResolver
+  • 若项目中使用了 JSTL，则 SpringMVC 会自动把视图由
+  InternalResourceView 转为 JstlView
+  • 若使用 JSTL 的 fmt 标签则需要在 SpringMVC 的配置文件中配置国际 化资源文件
+
+      <bean class="org.springframework.context.support.ResourceBundleMessageSource" id="messageSource">
+          <property name="basename" value="i18n"/>
+      </bean>
+
+      <fmt:message key="i18n.password"/>
+
+
+八、自定义视图
+    1、实现View,并加入到spring中
+    2、在mvc：xml中：
+
+          <!-- 配置视图  BeanNameViewResolver 解析器: 使用视图的名字来解析视图 -->
+          <!-- 通过 order 属性来定义视图解析器的优先级, order 值越小优先级越高 -->
+          <bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+              <property name="order" value="100"></property>
+          </bean>
+
+九、rest风格不建议使用.do和.html
+
+    前端会出现404
+
+      <mvc:default-servlet-handler/>
+      <mvc:annotation-driven/>
+
+
+十、<a></a> 超链接转换成post请求
+
+    1、 <a class="delete" href="/deleteEmps/${emp.id}"></a>
+    2、 <form action="" method="POST" >
+         <input type="hidden" name="DELETE"/>
+        </form>
+    3、
+      $(function({
+         $(".delete").click(function(){
+             var href= $(this).attr("href");
+             $("form").attr("action",href).submit();
+
+         })
+
+
+      })
+
+
+
+十一、spring-form标签
+
+    一般情况下，通过 GET 请求获取表单页面，而通过
+    POST 请求提交表单页面，因此获取表单页面和提交表单 页面的 URL 是相同的。只要满足该最佳条件的契
+    约，<form:form> 标签就无需通过 action 属性指定表单
+    提交的 URL
+    • 可以通过 modelAttribute 属性指定绑定的模型属性，若
+    没有指定该属性，则默认从 request 域对象中读取
+    command 的表单 bean，如果该属性值也不存在，则会 发生错误。
+    表单标签
+    • SpringMVC 提供了多个表单组件标签，如
+    <form:input/>、<form:select/> 等，用以绑定表单字段的
+    属性值，它们的共有属性如下：
+    – path：表单字段，对应 html 元素的 name 属性，支持级联属性
+    – htmlEscape：是否对表单值的 HTML 特殊字符进行转换，默认值
+    为 true
+    – cssClass：表单组件对应的 CSS 样式类名 – cssErrorClass：表单组件的数据存在错误时，采取的 CSS 样式
+    表单标签
+    • form:input、form:password、form:hidden、form:textarea
+    ：对应 HTML 表单的 text、password、hidden、textarea
+    标签
+    • form:radiobutton：单选框组件标签，当表单 bean 对应的
+    属性值和 value 值相等时，单选框被选中 • form:radiobuttons：单选框组标签，用于构造多个单选
+    框– items：可以是一个 List、String[] 或 Map
+    – itemValue：指定 radio 的 value 值。可以是集合中 bean 的一个
+    属性值 – itemLabel：指定 radio 的 label 值 – delimiter：多个单选框可以通过 delimiter 指定分隔符
+    表单标签
+    • form:checkbox：复选框组件。用于构造单个复选框 • form:checkboxs：用于构造多个复选框。使用方式同
+    form:radiobuttons 标签
+    • form:select：用于构造下拉框组件。使用方式同
+    form:radiobuttons 标签
+    • form:option：下拉框选项组件标签。使用方式同
+    form:radiobuttons 标签
+    • form:errors：显示表单组件或数据校验所对应的错误 – <form:errors path= “ *” /> ：显示表单所有的错误
+    – <form:errors path= “ user*” /> ：显示所有以 user 为前缀的属性对应
+    的错误
+    – <form:errors path= “ username” /> ：显示特定表单对象属性的错误
+
+
+十二、mvc:annotation-driven
+
+    关于 mvc:annotation-driven
+    • <mvc:annotation-driven /> 会自动注册
+    RequestMappingHandlerMapping、
+    RequestMappingHandlerAdapter 与
+    ExceptionHandlerExceptionResolver 三个bean。
+
+    • 还将提供以下支持：
+    – 支持使用 ConversionService 实例对表单参数进行类型转换
+    – 支持使用 @NumberFormat annotation、@DateTimeFormat
+    注解完成数据类型的格式化
+    – 支持使用 @Valid 注解对 JavaBean 实例进行 JSR 303 验证
+    – 支持使用 @RequestBody 和 @ResponseBody 注解
+
+
+十三、@InitBinder
+
+   • 由 @InitBinder 标识的方法，可以对 WebDataBinder 对 象进行初始化。WebDataBinder 是 DataBinder 的子类，用
+   于完成由表单字段到 JavaBean 属性的绑定 • @InitBinder方法不能有返回值，它必须声明为void。 • @InitBinder方法的参数通常是是 WebDataBinder
+
+   public void initBinder(WebDataBinder webDataBinder){
+       webDataBinder.setDisallowsFields(xxx);
+   }
+
+
+十四、数据格式化
+
+
+     • 对属性对象的输入/输出进行格式化，从其本质上讲依然
+     属于 “类型转换” 的范畴。
+     • Spring 在格式化模块中定义了一个实现
+     ConversionService 接口的
+     FormattingConversionService 实现类，该实现类扩展 了 GenericConversionService，因此它既具有类型转换的
+     功能，又具有格式化的功能
+     • FormattingConversionService 拥有一个
+     FormattingConversionServiceFactroyBean 工厂类，
+     后者用于在 Spring 上下文中构造前者
+
+
+十五、 数据格式化
+    • FormattingConversionServiceFactroyBean 内部已经注册了 : – NumberFormatAnnotationFormatterFactroy：支持对数字类型的属性
+    使用 @NumberFormat 注解
+    – JodaDateTimeFormatAnnotationFormatterFactroy：支持对日期类型
+    的属性使用 @DateTimeFormat 注解
+    • 装配了 FormattingConversionServiceFactroyBean 后，就可
+    以在 Spring MVC 入参绑定及模型数据输出时使用注解驱动
+    了。<mvc:annotation-driven/> 默认创建的
+    ConversionService 实例即为
+    FormattingConversionServiceFactroyBean
+
+
+    实例：
+        1、mvc:xml 驱动注解
+           <mvc:annotation-driven/> 默认创建的ConversionService
+           实例即为FormattingConversionServiceFactroyBean
+
+       @DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
+       private Date date;
+
+       @NumberFormat(pattern="#,###,###.#")
+       private float number
+
+
+
+十六、Spring MVC 数据校验
+
+   • <mvc:annotation-driven/> 会默认装配好一个
+   LocalValidatorFactoryBean，通过在处理方法的入参上
+   标注 @valid 注解即可让 Spring MVC 在完成数据绑定后执行
+   数据校验的工作
+
+   Spring 本身并没有提供 JSR303 的实现，所以必须将
+   JSR303 的实现者的 jar 包放到类路径下
+
+   Spring MVC 数据校验
+   • <mvc:annotation-driven/> 会默认装配好一个
+   LocalValidatorFactoryBean，通过在处理方法的入参上标 注 @valid 注解即可让 Spring MVC 在完成数据绑定后执行
+   数据校验的工作
+   • 在已经标注了 JSR303 注解的表单/命令对象前标注一个
+   @Valid，Spring MVC 框架在将请求参数绑定到该入参对象
+   后，就会调用校验框架根据注解声明的校验规则实施校验 • Spring MVC 是通过对处理方法签名的规约来保存校验结果
+   的：前一个表单/命令对象的校验结果保存到随后的入参
+   中，这个保存校验结果的入参必须是 BindingResult 或
+   Errors 类型，这两个类都位于
+   org.springframework.validation 包中
+   Spring MVC 数据校验 • 需校验的 Bean 对象和其绑定结果对象或错误对象时成对出现的，它们 之间不允许声明其他的入参
+   • Errors 接口提供了获取错误信息的方法，如 getErrorCount() 或
+   getFieldErrors(String field)
+   • BindingResult 扩展了 Errors 接口
+   User和其绑定结果的对象 public String handle(@Valid User user, BindingResult userBindingResult, String sessionId,ModelMap mm, @Valid Dept dept, Errors deptErrors)
+   { Dept和其校验的结果对象
+
+
+   			1). 如何校验 ? 注解 ?
+   			①. 使用 JSR 303 验证标准
+   			②. 加入 hibernate validator 验证框架的 jar 包
+   			③. 在 SpringMVC 配置文件中添加 <mvc:annotation-driven />
+   			④. 需要在 bean 的属性上添加对应的注解
+   			⑤. 在目标方法 bean 类型的前面添加 @Valid 注解
+
+   实例
+       @Past
+       字段
+       @NotNull
+       字段
+     方法： public String input(@Valid User user,BindingResult b.Map map){
+          if报错信息{
+             return “input”;
+          }
+     }
+      前端：
+        Birth: <form:input path="birth"/>
+        	   <form:errors path="birth"></form:errors>
+
+
+
+
+十七、国际化：
+      提示消息的国际化
+      • 每个属性在数据绑定和数据校验发生错误时，都会生成一个对应的 FieldError 对象。
+
+      • 当一个属性校验失败后，校验框架会为该属性生成 4 个消
+      息代码，这些代码以校验注解类名为前缀，结合
+      modleAttribute、属性名及属性类型名生成多个对应的消
+      息代码：例如 User 类中的 password 属性标准了一个 @Pattern 注
+      解，当该属性值不满足 @Pattern 所定义的规则时, 就会产生以下 4
+      个错误代码： – Pattern.user.password
+      – Pattern.password
+      – Pattern.java.lang.String
+      – Pattern
+      • 当使用 Spring MVC 标签显示错误消息时， Spring MVC 会查看
+      WEB 上下文是否装配了对应的国际化消息，如果没有，则显示默认 的错误消息，否则使用国际化消息。
+      提示消息的国际化 • 若数据类型转换或数据格式转换时发生错误，或该有的参
+      数不存在，或调用处理方法时发生错误，都会在隐含模型
+      中创建错误消息。其错误代码前缀说明如下：
+      – required：必要的参数不存在。如 @RequiredParam(“param1”)
+      标注了一个入参，但是该参数不存在
+      – typeMismatch：在数据绑定时，发生数据类型不匹配的问题
+      – methodInvocation：Spring MVC 在调用处理方法时发生了错误
+      • 注册国际化资源文件
+
+       <!--注册国际化资源-->
+          <bean class="org.springframework.context.support.ResourceBundleMessageSource" id="messageSource">
+              <property name="basename" value="i18n"/>
+          </bean>
+
+       不经过controller：
+
+           <mvc:view-controller path="/i18n2" view-name="i18n2"/>
+           <mvc:view-controller path="/i18n1" view-name="i18n1"/>
+
+           <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
+
+十八、mvc文件上传初步
+    1、<form action="testFileUpload" method="POST" enctype="multipart/form-data">
+          File: <input type="file" name="file"/>
+          Desc: <input type="text" name="desc"/>
+          <input type="submit" value="Submit"/>
+      </form>
+
+    2、 加入jar commons-fileUpload  commons-io
+
+    3、   <!-- 配置 MultipartResolver -->
+
+           <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+
+           <property value="UTF-8" name="defaultEncoding"/>
+
+           <property value="1024000" name="maxUploadSize"/>
+
+    4、@RequestMapping("/testFileUpload")
+          public String testFileUpload(@RequestParam("desc") String desc,
+                                       @RequestParam("file") MultipartFile file) throws IOException{
+              System.out.println("desc: " + desc);
+              System.out.println("OriginalFilename: " + file.getOriginalFilename());
+              System.out.println("InputStream: " + file.getInputStream());
+              return "success";
+          }
+
+    servlet 文件上传
+
+           //1、判断是不是分段文件
+              if(ServletFileUpload.isMultipartContent(request)){
+                  //获取FileItemFactory
+                  FileItemFactory factor=new DiskFileItemFactory();
+                  ServletFileUpload upload = new ServletFileUpload(factor);
+                  //获取表单list集合信息
+                  try {
+                      List<FileItem> items = upload.parseRequest(request);
+                      for(FileItem item:items){
+                          //判断表单是否是特殊的，
+                          if(item.isFormField()){
+                              System.out.println(item.getFieldName());
+                              System.out.println(item.getString("UTF-8"));
+                          }else {
+                              System.out.println(item.getFieldName());
+                              System.out.println(item.getName());
+                              item.write(new File("E:\\"+item.getName()));
+                          }
+                      }
+                  } catch (Exception e) {
+                      e.printStackTrace();
+                  }
+
+十九、文件下载
+      1、返回值是ResponseEntity<byte[]> xiazai(HttpSession session){
+             ServletContext context=session.getServletContext();
+             InputStream in = servletContext.getResourceAsStream("/112.txt");
+            2:创建出byte
+             byte[] bytes=null;
+             bytes = new byte[in.available()];
+            3:创建出响应头
+              HttpHeaders("context-Disposition","attachment,filename=xx.xx");
+              new ResponseEntity<byte[]>(bytes,headers,HttpStatus.OK);
+
+      }
+
+
+二十、自定义拦截器
+
+   • Spring MVC也可以使用拦截器对请求进行拦截处理，用户
+   可以自定义拦截器来实现特定的功能，自定义的拦截器必
+   须实现HandlerInterceptor接口
+   – preHandle()：这个方法在业务处理器处理请求之前被调用，在该
+   方法中对用户请求 request 进行处理。如果程序员决定该拦截器对 请求进行拦截处理后还要调用其他的拦截器，或者是业务处理器去
+   进行处理，则返回true；如果程序员决定不需要再调用其他的组件 去处理请求，则返回false。 – postHandle()：这个方法在业务处理器处理完请求后，但
+   是DispatcherServlet 向客户端返回响应前被调用，在该方法中对 用户请求request进行处理。 – afterCompletion()：这个方法在 DispatcherServlet 完全处理完请
+   求后被调用，可以在该方法中进行一些资源清理的操作。
+
+   postHandler和afterCompletion 执行必要性preHandler返回true
+   多个拦截器 是倒序执行。
+
+
+二十一、全局异常
+    1、主要注解 @ExceptionHandler
+               @ControllerAdvice
+
+               handle中多个异常处理，返回最近的异常
+               打印异常到页面可以用Model
+
+    2、全局异常
+        拿登录来说：
+           ①、自定义异常
+            public LoginException extends Exception(){
+
+               public LoginException(){}
+               public LoginException(String msg){
+                 super(msg);
+               }
+            }
+           ②、编写全局异常
+            @ExceptionHandler(value= LoginException.class)
+               @ResponseBody
+               public Object loginExceptionResolver(Exception e){
+
+                   e.printStackTrace();
+
+                   Map<String,Object> map = new HashMap<>();
+                   map.put("success",false);
+                   map.put("msg",e.getMessage());
+
+                   return map;
+
+               }
+
+          ③、在登录时验证 把异常抛出
+            if(user==null){
+
+                throw new LoginException();
+
+           }
+
+          拦截器异常
+
+               @ExceptionHandler(value= InterceptorException.class)
+               public String interceptorExceptionResolver(Exception e){
+
+                   System.out.println("处理没登陆");
+
+                   e.printStackTrace();
+
+                   return "redirect:/settings/user/toLogin.do";
+
+                   //return "redirect:/login.jsp";
+
+               }

@@ -1,0 +1,136 @@
+一、web.xml
+
+   1、context-param:加入类路径下的spring配置文件的路径
+        <context-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring/applicationContext.xml</param-value>
+          </context-param>
+
+  2、springMvc:
+           ContextLoaderListener监听器的作用就是启动Web容器时,自动装配ApplicationContext的配置信息。
+           <listener>
+               <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+             </listener>
+         <servlet>
+             <servlet-name>springMvc</servlet-name>
+             <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+             <init-param>
+               <param-name>contextConfigLocation</param-name>
+               <param-value>classpath:spring/springMvc.xml</param-value>
+             </init-param>
+             <load-on-startup>1</load-on-startup>
+           </servlet>
+           <servlet-mapping>
+             <servlet-name>springMvc</servlet-name>
+             <url-pattern>*.do</url-pattern>
+           </servlet-mapping>
+   3、filter
+            <filter>
+                <filter-name>filter</filter-name>
+                <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+                <init-param>
+                  <param-name>encoding</param-name>
+                  <param-value>UTF-8</param-value>
+                </init-param>
+                <init-param>
+                  <param-name>forceRequestEncoding</param-name>
+                  <param-value>true</param-value>
+                </init-param>
+                <init-param>
+                  <param-name>forceResponseEncoding</param-name>
+                  <param-value>true</param-value>
+                </init-param>
+              </filter>
+              <filter-mapping>
+                <filter-name>filter</filter-name>
+                <url-pattern>/*</url-pattern>
+              </filter-mapping>
+
+二、mybatis配置文件：
+   <settings>
+
+        1、驼峰命名开启
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+
+        2、数据库默认null值修改为NULL
+        <setting name="jdbcTypeForNull" value="NULL"/>
+
+        3、日志
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!--显式的指定每个我们需要更改的配置的值，即使他是默认的。防止版本更新带来的问题  -->
+
+        4、开启缓存
+        <setting name="cacheEnabled" value="true"/>
+
+        5、开启懒加载，分布查询中（可以在mapper.xml中自由开关）
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+    </settings>
+
+        6、bean别名
+        <typeAliases>
+            <package name="com.zhang.tx.bean"/>
+        </typeAliases>
+
+        7、配置不同的数据库databaseIdProvider
+        <databaseIdProvider type="DB_VENDOR">
+            <property name="MySQL" value="mysql"/>
+            <property name="Oracle" value="oracle"/>
+            <property name="SQL Server" value="sqlserver"/>
+        </databaseIdProvider>
+
+三、spring配置文件：
+     <!--数据库连接信息-->
+      <context:property-placeholder location="classpath:properties/jdbc.properties"/>
+       <!-- Spring希望管理所有的业务逻辑组件，等。。。 -->
+       <context:component-scan base-package="com.zhang.tx.service">
+           <context:exclude-filter type="annotation"
+                                   expression="org.springframework.stereotype.Controller" />
+       </context:component-scan>
+       <!--阿里连接池-->
+       <bean  name="dataSource" class="com.alibaba.druid.pool.DruidDataSource"  init-method="init" destroy-method="close" >
+           <property name="url" value="${url}"></property>
+           <property name="username" value="${user}"></property>
+           <property name="password" value="${password}"></property>
+       </bean>
+
+       <!--SQLSessionFactory-->
+       <bean class="org.mybatis.spring.SqlSessionFactoryBean" name="factory">
+           <property name="dataSource" ref="dataSource"/>
+           <property name="configLocation" value="classpath:myBits/mybatis.xml" />
+       </bean>
+       <!--配置一个可以进行批量执行的sqlSession  -->
+       <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+           <constructor-arg name="sqlSessionFactory" ref="factory"></constructor-arg>
+           <constructor-arg name="executorType" value="BATCH"></constructor-arg>
+       </bean>
+       <!-- 扫描所有的mapper接口的实现，让这些mapper能够自动注入；
+        base-package：指定mapper接口的包名
+         -->
+       <mybatis-spring:scan base-package="com.zhang.tx.dao"/>
+       <!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+           <property name="basePackage" value="com.zhang.tx.dao"></property>
+       </bean> -->
+
+四、mvc配置文件：
+   <context:component-scan base-package="com.zhang.web" use-default-filters="false">
+           <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+       </context:component-scan>
+
+       <bean name="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+           <property name="prefix" value="/WEB-INF/pages/"/>
+           <property name="suffix" value=".jsp"/>
+        </bean>
+       <mvc:annotation-driven/>
+       <mvc:default-servlet-handler/>
+
+
+mybatis使用存储过程
+  	<select id="getPageByProcedure" statementType="CALLABLE" databaseId="oracle">
+  		{call hello_test(
+  			#{start,mode=IN,jdbcType=INTEGER},
+  			#{end,mode=IN,jdbcType=INTEGER},
+  			#{count,mode=OUT,jdbcType=INTEGER},
+  			#{emps,mode=OUT,jdbcType=CURSOR,javaType=ResultSet,resultMap=PageEmp}
+  		)}
+  	</select>

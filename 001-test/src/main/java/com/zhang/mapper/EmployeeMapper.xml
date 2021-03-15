@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhang.mapper.EmployeeMapper">
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"></cache>
+   <!-- <cache
+            eviction="FIFO"
+            flushInterval="60000"
+            size="512"
+            readOnly="false"/>-->
+    <!--eviction:
+    LRU – 最近最少使用：移除最长时间不被使用的对象。
+    FIFO – 先进先出：按对象进入缓存的顺序来移除它们。
+    SOFT – 软引用：基于垃圾回收器状态和软引用规则移除对象。
+    WEAK – 弱引用：更积极地基于垃圾收集器状态和弱引用规则移除对象。
+    -->
+    <!--
+    namespace:名称空间;指定为接口的全类名
+    id：唯一标识
+    resultType：返回值类型
+    #{id}：从传递过来的参数中取出id值
+    public Employee getEmpById(Integer id);
+     -->
+
+    <select id="getMapWEm" resultType="Employee">
+          select id,last_name as lastName,email,gender from tbl_employee where last_name like #{name}
+
+    </select>
+    <select id="getIdAndName5" resultType="Employee">
+        select id,last_name as lastName,email,gender from tbl_employee where id = #{list[0]}
+    </select>
+    <select id="getIdAndName1" resultType="Employee">
+        select id,last_name as lastName,email,gender from tbl_employee where id = #{id} and last_name=#{lastName}
+    </select>
+    <select id="getIdAndName2" resultType="Employee">
+        select id,last_name as lastName,email,gender from tbl_employee where id = #{param1} and last_name=#{param2}
+    </select>
+    <select id="getIdAndName3" resultType="Employee">
+        select id,last_name as lastName,email,gender from tbl_employee where id = #{id} and last_name=#{lastName}
+    </select>
+    <select id="getIdAndName4" resultType="Employee">
+        select id,last_name as lastName,email,gender from tbl_employee where id = #{id} and last_name=#{lastName}
+    </select>
+
+    <select id="getEmpById"  resultType="com.zhang.tx.bean.Employee">
+		select id,last_name as lastName,email,gender from tbl_employee where id = #{id}
+	</select>
+    <select id="getId" useCache="true" resultType="employee" databaseId="mysql">
+		select id,last_name,email,gender  from tbl_employee
+		 where id = #{id}
+	</select>
+    <select id="getId5" resultType="employee" databaseId="oracle">
+		select id,last_name,email,gender  from tbl_employee
+		 where id = #{id}
+	</select>
+
+    <select id="getId1" resultType="employee"  >
+		select id,last_name,email,gender  from tbl_employee
+		<if test="_parameter != null">
+
+		 where id = #{_parameter}
+        </if>
+	</select>
+
+    <!--void insertEmployee(Employee employee);
+    //update
+    void updateEmployee(Employee employee);
+    //delete
+    void deleteEmployee(Employee employee);-->
+
+    <insert id="insertEmployee" parameterType="com.zhang.tx.bean.Employee" useGeneratedKeys="true" keyProperty="id" databaseId="oracle" >
+        insert into tbl_employee(id,last_name,email,gender) values (#{id},#{lastName},#{email},#{gender})
+
+    </insert>
+    <insert id="insertEmployee1" parameterType="com.zhang.tx.bean.Employee" flushCache="false">
+        <if test="_databaseId == 'oracle'">
+
+        insert into tbl_employee(id,last_name,email,gender) values (#{id},#{lastName},#{email},#{gender,jdbcType=NULL})
+        </if>
+        <if test="_databaseId == 'mysql'">
+
+        insert into tbl_employee(id,last_name,email,gender) values (#{id},#{lastName},#{email},#{gender})
+        </if>
+
+    </insert>
+    <insert id="insertEmployee2" parameterType="com.zhang.tx.bean.Employee" databaseId="oracle" >
+        insert into tbl_employee(id,last_name,email,gender) values (#{id},#{lastName},#{email},#{gender})
+
+    </insert>
+
+    <update id="updateEmployee">
+        update tbl_employee set last_name=#{lastName},email=#{email},gender=#{gender} where id=#{id}
+
+    </update>
+
+    <delete id="deleteEmployee">
+        delete from tbl_employee where id=#{id}
+    </delete>
+</mapper>

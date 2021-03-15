@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="mybatis-ehcache-1.0.3 (2)">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/001-test/src/main/java/com/zhang/cacheJar/slf4j-api-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/001-test/src/main/java/com/zhang/cacheJar/slf4j-log4j12-1.6.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

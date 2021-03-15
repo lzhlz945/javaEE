@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:component-scan base-package="com.zhang.mvc" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+
+    </context:component-scan>
+
+    <bean name="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+     </bean>
+    <!-- 配置视图  BeanNameViewResolver 解析器: 使用视图的名字来解析视图 -->
+    <!-- 通过 order 属性来定义视图解析器的优先级, order 值越小优先级越高 -->
+    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+        <property name="order" value="100"></property>
+    </bean>
+
+   <!--注册国际化资源-->
+    <bean class="org.springframework.context.support.ResourceBundleMessageSource" id="messageSource">
+
+        <property name="basename" value="i18n"/>
+    </bean>
+
+
+    <mvc:annotation-driven conversion-service="conversionService2"></mvc:annotation-driven>
+
+    <bean class="org.springframework.format.support.FormattingConversionService" id="conversionService2"></bean>
+    <mvc:default-servlet-handler/>
+    <!-- 配置 MultipartResolver -->
+
+
+
+    <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+
+    <property value="UTF-8" name="defaultEncoding"/>
+
+    <property value="1024000" name="maxUploadSize"/>
+
+    </bean>
+
+    <mvc:interceptors>
+
+           <bean class="com.zhang.mvc.interceptor.FirstInterseptor"/>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/testMap"/>
+            <mvc:exclude-mapping path="/testMap"/>
+           <bean class="com.zhang.mvc.interceptor.SecInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <mvc:view-controller path="/i18n2" view-name="i18n2"/>
+    <mvc:view-controller path="/i18n1" view-name="i18n1"/>
+</beans>

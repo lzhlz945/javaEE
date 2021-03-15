@@ -1,0 +1,54 @@
+https://repo.spring.io/release/org/springframework/spring/ 下载地址
+
+一、ioc原理
+   1、什么是 IOC
+   （1）控制反转，把对象创建和对象之间的调用过程，交给 Spring 进行管理
+   （2）使用 IOC 目的：为了耦合度降低
+   （3）做入门案例就是 IOC 实现
+   2、IOC 底层原理
+   （1）xml 解析、工厂模式、反射
+
+
+二、IOC（BeanFactory 接口）
+
+   1、IOC 思想基于 IOC 容器完成，IOC 容器底层就是对象工厂
+   2、Spring 提供 IOC 容器实现两种方式：（两个接口）
+   （1）BeanFactory：IOC 容器基本实现，是 Spring 内部的使用接口，不提供开发人员进行使用
+   * 加载配置文件时候不会创建对象，在获取对象（使用）才去创建对象
+   （2）ApplicationContext：BeanFactory 接口的子接口，提供更多更强大的功能，一般由开发人
+   员进行使用
+   * 加载配置文件时候就会把在配置文件对象进行创建
+
+   ioc在创建对象时：创建对象时候，默认也是执行无参数构造方法完成对象创建
+   DI：依赖注入，就是注入属性
+
+三、4
+
+  1、字面量
+  （1）null 值
+  <!--null 值--> <property name="address">
+   <null/>
+  </property> （2）属性值包含特殊符号
+  <!--属性值包含特殊符号
+   1 把<>进行转义 &lt; &gt;
+   2 把带特殊符号内容写到 CDATA
+  --><property name="address">
+   <value><![CDATA[<<南京>>]]></value>
+  </property>
+
+四、级联的方法：
+  1、<property name="dept" ref="dept1"/>
+            <property name="dept.name" value="sss"/>
+        </bean>
+        <bean class="com.zhang.spring.beans.Dept" id="dept1">
+            <property name="name" value="sd"/>
+        </bean>
+
+  2、  <property name="dept" ref="dept1"/>
+
+  3、属性中用bean
+      <property name="dept">
+                 <bean class="com.zhang.spring.beans.Dept" id="dept">
+                     <property name="name" value="金融部"/>
+                 </bean>
+             </property>

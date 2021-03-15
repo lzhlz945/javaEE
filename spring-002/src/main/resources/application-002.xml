@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util
+http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+
+    <bean class="com.zhang.spring.Stu" id="stu">
+        <!--数组-->
+        <property name="courses">
+            <array>
+                <value>天空</value>
+                <value>大海</value>
+            </array>
+        </property>
+
+        <!--list-->
+        <property name="list">
+            <list>
+                <value>list1</value>
+                <value>list2</value>
+            </list>
+        </property>
+
+        <!--map-->
+        <property name="maps">
+            <map>
+                <entry key="map1" value="map1Value1"/>
+                <entry key="map2" value="map1Value2"/>
+            </map>
+        </property>
+
+        <!--set-->
+        <property name="sets">
+            <set>
+                <value>set1</value>
+                <value>set2</value>
+            </set>
+        </property>
+
+
+        <property name="cusList">
+            <list>
+                <ref bean="cus1"></ref>
+                <ref bean="cus2"></ref>
+            </list>
+        </property>
+
+    </bean>
+
+    <bean id="cus1" class="com.zhang.spring.Cus">
+        <property name="cname" value="array1"/>
+    </bean>
+
+    <bean id="cus2" class="com.zhang.spring.Cus">
+        <property name="cname" value="array2"/>
+    </bean>
+
+
+<util:list id="bookList">
+    <value>1</value>
+    <value>2</value>
+    <value>3</value>
+</util:list>
+
+    <bean class="com.zhang.spring.Stu" id="stu3">
+        <property name="list" ref="bookList"/>
+
+    </bean>
+
+
+</beans>
