@@ -94,7 +94,7 @@
 		<!-- 为不同的数据库厂商起别名 -->
 		<property name="MySQL" value="mysql"/>
 		<property name="Oracle" value="oracle"/>
-		<property name="SQL Server" value="sqlserver"/>
+		<property name="SQL Server" value="sqlServer"/>
 	</databaseIdProvider>
 	
 	

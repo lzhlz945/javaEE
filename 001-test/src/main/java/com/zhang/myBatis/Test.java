@@ -34,11 +34,10 @@ public class Test {
     @org.junit.jupiter.api.Test
     public void test01() throws IOException {
 
-        String resources= "myBits/mybatis.xml";
-        InputStream inputStream = Resources.getResourceAsStream(resources);
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        SqlSession session = sqlSessionFactory.openSession(true);
-
+        String resource="mybatis.xml";
+        InputStream stream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(stream);
+        SqlSession session = sessionFactory.openSession(true);
         try {
             Employee employee = session.selectOne("EmployeeMapper.getEmpById", 2);
             System.out.println(employee);
