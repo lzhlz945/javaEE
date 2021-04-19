@@ -26,20 +26,20 @@
 	targetPackage="test.model"：目标包名
 	targetProject="\MBGTestProject\src"：目标工程
 	-->
-    <javaModelGenerator targetPackage="com.zhang.tx.bean"
-    		targetProject=".\src">
+    <javaModelGenerator targetPackage="com.test.bean"
+    		targetProject="src/main/java">
       <property name="enableSubPackages" value="true" />
       <property name="trimStrings" value="true" />
     </javaModelGenerator>
 
 	<!-- sqlMapGenerator：sql映射生成策略： -->
-    <sqlMapGenerator targetPackage="com.zhang.tx.dao"
+    <sqlMapGenerator targetPackage="com.test.dao"
     	targetProject="src/main/java">
       <property name="enableSubPackages" value="true" />
     </sqlMapGenerator>
 
 	<!-- javaClientGenerator:指定mapper接口所在的位置 -->
-    <javaClientGenerator type="XMLMAPPER" targetPackage="com.zhang.tx.dao"
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.test.dao"
     	targetProject="src/main/java">
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
