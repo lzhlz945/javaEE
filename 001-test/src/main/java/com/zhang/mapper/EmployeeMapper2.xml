@@ -41,7 +41,7 @@
            select * from tbl_employee
          <where>
              <choose>
-                 <when test="id != null">
+                 <when test="id != null and !=''">
                      id=#{id}
                  </when>
                  <when test="lastName != null">
@@ -64,6 +64,9 @@
 
     <update id="updateById">
         update tbl_employee
+<!--        <trim prefixOverrides="and" suffixOverrides="and">
+
+        </trim>-->
         <set>
         <if test="id != null and id != ''">
             id=#{id} ,
@@ -82,22 +85,24 @@
     <select id="getEmployee3" resultType="Employee">
 
         select * from tbl_employee where id in
-        <foreach collection="list" item="ee" open="(" close=")" separator=",">
-            #{ee}
-        </foreach>
+         <foreach collection="list" item="ee" separator="," open="(" close=")">
+             #{ee}
+         </foreach>
     </select>
 
     <!--批量插入-->
     <insert id="insert1">
         insert into tbl_employee(id,last_name,gender,email,dp_id)  values
-        <foreach collection="emps" item="ee" separator=",">
-            (
-            #{ee.id},
-            #{ee.lastName},
-            #{ee.gender},
-            #{ee.email},
-            #{ee.dept.id}
-            )
+        <foreach collection="emps" separator="," item="ee">
+
+                (
+                #{ee.id},
+                #{ee.lastName},
+                #{ee.gender},
+                #{ee.email},
+                #{ee.dept.id}
+                )
+
 
         </foreach>
 
@@ -137,18 +142,19 @@
             last_name like #{name1}
         </if>
     </select>
+
     <sql id="12">
-        <if test="_databaseId == 'mysql'">
+        <if test="_dataBaseId='mysql'">
             id,last_name,email,gender ${x}
         </if>
-          <if test="_databaseId == 'oracle'">
+        <if test="_dataBaseId='oracle'">
             id,last_name,email,gender
         </if>
-
     </sql>
-    <select id="getSql" resultType="com.zhang.tx.bean.Employee" databaseId="mysql">
+
+    <select id="getSql" resultType="employee" databaseId="mysql">
         select <include refid="12">
-         <property name="x" value="id"/>
+         <property name="x" value="123"/>
     </include> from tbl_employee
 
     </select>

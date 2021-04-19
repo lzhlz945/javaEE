@@ -34,7 +34,7 @@ public class MyFirstPlugin implements Interceptor {
 		Object value = metaObject.getValue("parameterHandler.parameterObject");
 		System.out.println("sql语句用的参数是："+value);
 		//修改完sql语句要用的参数
-		metaObject.setValue("parameterHandler.parameterObject", 3);
+		metaObject.setValue("parameterHandler.parameterObject", 12);
 		//执行目标方法
 		Object proceed = invocation.proceed();
 		//返回执行后的返回值

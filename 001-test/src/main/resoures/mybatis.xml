@@ -19,6 +19,16 @@
 	 -->
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
+		<setting name="useGeneratedKeys" value="true"/>
+		<!--log4j-->
+		<setting name="logImpl" value="STDOUT_LOGGING" />
+		<!--字段空值处理，关于Oracle的-->
+		<setting name="jdbcTypeForNull" value="NULL"/>
+		<!--打开延迟加载的开关  -->
+		<setting name="lazyLoadingEnabled" value="true"/>
+		<!--将积极加载改为消极加载及按需加载  -->
+		<setting name="aggressiveLazyLoading" value="false"/>
+
 	</settings>
 
 	
@@ -39,13 +49,13 @@
 		
 		<!-- 3、批量起别名的情况下，使用@Alias注解为某个类型指定新的别名 -->
 	</typeAliases>
-	<plugins>
-		<plugin interceptor="com.zhang.plugins.MyFirstPlugin">
-			<property name="user" value="zs"/>
-			<property name="password" value="123456"/>
-		</plugin>
+	<!--<plugins>-->
+		<!--<plugin interceptor="com.zhang.plugins.MyFirstPlugin">&ndash;&gt;-->
+			<!--&lt;!&ndash;<property name="user" value="zs"/>&ndash;&gt;-->
+			<!--&lt;!&ndash;<property name="password" value="123456"/>&ndash;&gt;-->
+		<!--</plugin>-->
 
-	</plugins>
+	<!--</plugins>-->
 	<!-- 
 		4、environments：环境们，mybatis可以配置多种环境 ,default指定使用某种环境。可以达到快速切换环境。
 			environment：配置一个具体的环境信息；必须有两个标签；id代表当前环境的唯一标识
@@ -68,7 +78,7 @@
 			<dataSource type="POOLED">
 				<property name="driver" value="${driverClassName}" />
 				<property name="url" value="${url}" />
-				<property name="username" value="${username}" />
+				<property name="username" value="${username1}" />
 				<property name="password" value="${password}" />
 			</dataSource>
 		</environment>

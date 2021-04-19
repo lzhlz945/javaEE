@@ -87,13 +87,51 @@ public class Test {
 
     }
     @org.junit.jupiter.api.Test
+    public void test3() throws IOException {
+        SqlSessionFactory factory = this.getSqlSessionFactory();
+        SqlSession sqlSession = factory.openSession();
+        try {
+            EmployeeMapper1 mapper = sqlSession.getMapper(EmployeeMapper1.class);
+            List<Employee> employeeList = mapper.test3(1);
+            for (Employee employee : employeeList) {
+                System.out.println(employee);
+                String deptName = employee.getDept().getDeptName();
+                System.out.println(deptName);
+            }
+
+            sqlSession.commit();
+        } finally {
+            sqlSession.close();
+        }
+    }
+    @org.junit.jupiter.api.Test
+    public void test4() throws IOException {
+        SqlSessionFactory factory = this.getSqlSessionFactory();
+        SqlSession sqlSession = factory.openSession();
+        try {
+            EmployeeMapper1 mapper = sqlSession.getMapper(EmployeeMapper1.class);
+            List<Employee> employeeList = mapper.getId4("zs");
+            Department dept=null;
+//            for (Employee employee : employeeList) {
+//                //实现懒加载 延迟加载
+//                employee.getDept();
+//            }
+            sqlSession.commit();
+        } finally {
+            sqlSession.close();
+        }
+    }
+    @org.junit.jupiter.api.Test
     public void test05() throws IOException {
         SqlSessionFactory factory = this.getSqlSessionFactory();
         SqlSession sqlSession = factory.openSession();
         try {
             EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
-            Employee employee = new Employee(77, "ss", "1", "12");
-            mapper.insertEmployee1(employee);
+            Employee employee = new Employee( "ss", "1", "12");
+            Employee sss = new Employee(15, "sss", "1", "12");
+            Employee s = new Employee(15, "sss");
+            mapper.insertEmployee(employee);
+            System.out.println("获取主键："+employee.getId());
 
             sqlSession.commit();
         } finally {

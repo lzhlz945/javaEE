@@ -18,6 +18,7 @@ public class Employee implements Serializable {
     private String lastName;
     private String gender;
     private String email;
+    private Integer did;
     private Department dept;
 
 
@@ -27,6 +28,16 @@ public class Employee implements Serializable {
 
     public Employee(Integer id, String lastName, String gender, String email) {
         this.id = id;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.email = email;
+    }
+    public Employee(Integer id, String lastName) {
+        this.id = id;
+        this.lastName = lastName;
+    }
+    public Employee(String lastName, String gender, String email) {
+
         this.lastName = lastName;
         this.gender = gender;
         this.email = email;

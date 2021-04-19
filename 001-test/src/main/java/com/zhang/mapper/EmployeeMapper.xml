@@ -69,14 +69,14 @@
     //delete
     void deleteEmployee(Employee employee);-->
 
-    <insert id="insertEmployee" parameterType="com.zhang.tx.bean.Employee" useGeneratedKeys="true" keyProperty="id" databaseId="oracle" >
-        insert into tbl_employee(id,last_name,email,gender) values (#{id},#{lastName},#{email},#{gender})
+    <insert id="insertEmployee" parameterType="com.zhang.tx.bean.Employee" useGeneratedKeys="true" keyProperty="id" databaseId="mysql" >
+        insert into tbl_employee(last_name,gender,email) values (#{lastName},#{gender},#{email})
 
     </insert>
-    <insert id="insertEmployee1" parameterType="com.zhang.tx.bean.Employee" flushCache="false">
+    <insert id="insertEmployee1" parameterType="com.zhang.tx.bean.Employee" >
         <if test="_databaseId == 'oracle'">
 
-        insert into tbl_employee(id,last_name,email,gender) values (#{id},#{lastName},#{email},#{gender,jdbcType=NULL})
+        insert into em(id,name) values (#{id},#{lastName})
         </if>
         <if test="_databaseId == 'mysql'">
 

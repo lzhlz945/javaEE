@@ -149,7 +149,7 @@ useGeneratedKeys="true" keyProperty="id"
         where id = #{id} and last_name=#{lastName}  会抛出异常
  2、 Employee sa = mapper.getIdAndName1(2, "sa");
        Employee getIdAndName1(Integer id,String lastName);
-        where id = #{Parma1} and last_name=#{param2}  正常
+        where id = #{Param1} and last_name=#{param2}  正常
  3、 Employee sa = mapper.getIdAndName1(2, "sa");
        Employee getIdAndName1(@Param("id")Integer id,@Param("lastName)String lastName);
         where id = #{id} and last_name=#{lastName}  正常

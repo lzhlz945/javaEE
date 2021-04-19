@@ -30,7 +30,7 @@
     </resultMap>
 
     <!--第二种关联其他表的字段-->
-    <resultMap id="resultMapByEmployee3" type="com.zhang.tx.bean.Employee">
+    <resultMap id="resultMapByEmployee33" type="com.zhang.tx.bean.Employee">
         <!--id:主键的，column=数据库的字段名，property：javaBean的对应属性名-->
         <id column="id" property="id"/>
         <!---->
@@ -48,6 +48,17 @@
 
     </resultMap>
 
+    <resultMap id="resultMapByEmployee3" type="com.zhang.tx.bean.Employee">
+        <id column="id" property="id"/>
+        <result column="last_name" property="lastName"/>
+        <result column="gender" property="gender"/>
+        <result column="email" property="email"/>
+        <result column="dp_id" property="did"/>
+        <association property="dept" javaType="com.zhang.tx.bean.Department">
+            <result column="id" property="id" />
+            <result column="dep_name" property="deptName"/>
+        </association>
+    </resultMap>
     <!--第三种：分步封装-->
 
     <resultMap id="resultMapByEmployee4" type="com.zhang.tx.bean.Employee">
@@ -55,14 +66,25 @@
         <result column="last_name" property="lastName"/>
         <result column="gender" property="gender"/>
         <result column="email" property="email"/>
-        <association property="dept" select="com.zhang.mapper.DepartmentMapper.getById"
-        column="dp_id" >
+        <result column="dp_id" property="did"/>
+        <association property="dept" javaType="com.zhang.tx.bean.Department"
+                     select="com.zhang.mapper.DepartmentMapper.getById" column="{id=dp_id}" fetchType="eager"><!--延迟加载开关-->
+                     <!--延迟加载开关-->
+
         </association>
 
     </resultMap>
 
+    <select id="test3" resultMap="resultMapByEmployee3">
+        SELECT
+       *
+        FROM
+        tbl_employee e left JOIN tbl_department d
+        on  e.dp_id=d.id
+        where e.dp_id=#{did}
+    </select>
     <select id="getId4" resultMap="resultMapByEmployee4">
-      select id,last_name,email,gender,dp_id from tbl_employee where id = #{id}
+      select id,last_name,email,gender,dp_id from tbl_employee where last_name = #{lastName}
 
     </select>
     <select id="getId3" resultMap="resultMapByEmployee3">

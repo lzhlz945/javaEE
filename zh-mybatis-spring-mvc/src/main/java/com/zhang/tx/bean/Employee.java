@@ -18,6 +18,7 @@ public class Employee implements Serializable {
     private String lastName;
     private String gender;
     private String email;
+    private Integer did;
     private Department dept;
 
 

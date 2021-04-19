@@ -3,6 +3,17 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/001-test/001-test.iml" filepath="$PROJECT_DIR$/001-test/001-test.iml" />
+      <module fileurl="file://G:/Mybatis/课件&amp;代码/代码/MyBatis_01_HelloWorld/MyBatis_01_HelloWorld.iml" filepath="G:/Mybatis/课件&amp;代码/代码/MyBatis_01_HelloWorld/MyBatis_01_HelloWorld.iml" />
+      <module fileurl="file://G:/Mybatis/课件&amp;代码/代码/MyBatis_02_config/MyBatis_02_config.iml" filepath="G:/Mybatis/课件&amp;代码/代码/MyBatis_02_config/MyBatis_02_config.iml" />
+      <module fileurl="file://G:/Mybatis/课件&amp;代码/代码/MyBatis_03_mapper/MyBatis_03_mapper.iml" filepath="G:/Mybatis/课件&amp;代码/代码/MyBatis_03_mapper/MyBatis_03_mapper.iml" />
+      <module fileurl="file://G:/Mybatis/课件&amp;代码/代码/MyBatis_04_DynamicSQL/MyBatis_04_DynamicSQL.iml" filepath="G:/Mybatis/课件&amp;代码/代码/MyBatis_04_DynamicSQL/MyBatis_04_DynamicSQL.iml" />
+      <module fileurl="file://G:/Mybatis/课件&amp;代码/代码/MyBatis_05_cache/MyBatis_05_cache.iml" filepath="G:/Mybatis/课件&amp;代码/代码/MyBatis_05_cache/MyBatis_05_cache.iml" />
+      <module fileurl="file://G:/Mybatis/课件&amp;代码/代码/MyBatis_06_ssm/MyBatis_06_ssm.iml" filepath="G:/Mybatis/课件&amp;代码/代码/MyBatis_06_ssm/MyBatis_06_ssm.iml" />
+      <module fileurl="file://G:/Mybatis/课件&amp;代码/代码/MyBatis_07_mbg/MyBatis_07_mbg.iml" filepath="G:/Mybatis/课件&amp;代码/代码/MyBatis_07_mbg/MyBatis_07_mbg.iml" />
+      <module fileurl="file://G:/Mybatis/课件&amp;代码/代码/MyBatis_09_source/MyBatis_09_source.iml" filepath="G:/Mybatis/课件&amp;代码/代码/MyBatis_09_source/MyBatis_09_source.iml" />
+      <module fileurl="file://G:/Mybatis/课件&amp;代码/代码/MyBatis_10_plugin/MyBatis_10_plugin.iml" filepath="G:/Mybatis/课件&amp;代码/代码/MyBatis_10_plugin/MyBatis_10_plugin.iml" />
+      <module fileurl="file://G:/Mybatis/课件&amp;代码/代码/MyBatis_11_other/MyBatis_11_other.iml" filepath="G:/Mybatis/课件&amp;代码/代码/MyBatis_11_other/MyBatis_11_other.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/javaEE.iml" filepath="$PROJECT_DIR$/.idea/javaEE.iml" />
       <module fileurl="file://$PROJECT_DIR$/mvc-001/mvc-001.iml" filepath="$PROJECT_DIR$/mvc-001/mvc-001.iml" />
       <module fileurl="file://$PROJECT_DIR$/nxgc-mybatis/nxgc-mybatis.iml" filepath="$PROJECT_DIR$/nxgc-mybatis/nxgc-mybatis.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugin-001/plugin-001.iml" filepath="$PROJECT_DIR$/plugin-001/plugin-001.iml" />
