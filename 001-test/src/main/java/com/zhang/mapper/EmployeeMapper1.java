@@ -18,4 +18,7 @@ public interface EmployeeMapper1 {
    Employee selectByDiscriminator(Integer id);
    List<Employee> test3(Integer id);
    List<Employee> selectByDeptId(Integer deptId);
+
+   List<Employee> getEmps();
+
 }
