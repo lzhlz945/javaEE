@@ -19,6 +19,7 @@ public interface EmployeeMapper1 {
    List<Employee> test3(Integer id);
    List<Employee> selectByDeptId(Integer deptId);
 
+   void addBath(Employee employee);
    List<Employee> getEmps();
 
 }

@@ -95,6 +95,10 @@
 
     </resultMap>
 
+    <!--批量操作-->
+    <insert id="addBath">
+        insert into tbl_employee(id,last_name,email,gender) values (#{id},#{lastName},#{email},#{gender})
+    </insert>
     <select id="test3" resultMap="resultMapByEmployee3">
         SELECT
        *

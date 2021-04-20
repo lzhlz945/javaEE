@@ -19,10 +19,10 @@
 	</typeAliases>
 	<!--plugins：注册插件  -->
 	<plugins>
-		<plugin interceptor="com.zhang.plugins.MyFirstPlugin">
+		<!--<plugin interceptor="com.zhang.plugins.MyFirstPlugin">
 			<property name="username" value="root"/>
 			<property name="password" value="123456"/>
-		</plugin>
+		</plugin>-->
 		<plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
 	</plugins>
 	<environments default="development">
